@@ -1,6 +1,6 @@
 <div id="container">
 
-    <section>
+    <!-- <section>
       <div class="content_m" style="background-image:url('/assets/img/news_bg.jpg')">
         <div id="con_m" class="masonry" style="position: relative; height: 320px; width: 960px;"><a class="lov_block" href="https://line.me/R/ti/p/%40378ntnxx" target="_blank"><div class="m-box masonry-brick" style="width: 290px; height: 290px; background-color: rgb(0, 51, 153); color: rgb(255, 255, 255); position: absolute; top: 0px; left: 0px;">
         <span style="color:#FFFFFF; background-color:#FF0000;">LINE公式</span>
@@ -22,11 +22,46 @@
         </a></div>
         <br clear="all">
         </div>  
-    </section>
+    </section> -->
     
     <section>
-        <p>weblog works!&nbsp;&nbsp;{{msg}}</p>
-        <button (click)="onFinished()">API</button>
+        <div class="content_m" style="background-image:url(img/news_bg.jpg);">
+            <h2>ニュース数 {{news.length}} </h2>
+            <div id="con_m" class="masonry" style="position: relative; height: 320px; width: 960px;">
+                <div *ngFor="let n of news" >
+                    <a class="lov_block" href="http://dietacademy.co.jp/wp/voice/" target="_blank" >
+                        <div class="m-box masonry-brick" style="width:250px; height:200px background-color: rgb(212, 237, 244); color: rgb(0, 0, 0);">
+                            <span style="color:#FFFFFF; background-color:#FF0000;">{{n.title}}</span>
+                            <p class="con_m3"><img src="http://localhost:8000/news_img/{{n.image}}" width="60%"></p>
+                            <p class="con_m1">{{n.message}}</p>
+                        </div>
+                    </a>
+                    <button (click)="selectTarget(n.seq)">{{n.seq}}</button>
+                </div>
+            </div>
+
+            <br clear="all"/>
+        </div>
     </section>
+
+    <section>
+        <form #myForm="ngForm" (ngSubmit)="show()" >
+            <div>
+                {{editSeq}}
+                <label for="message">ニュース内容</label>
+                <textarea id="message" cols="100" rows="6" name="editMessage" [(ngModel)]="editMessage" 
+                    #msg="ngModel" required >{{editMessage}}</textarea>
+            </div>
+        </form>
+    </section>
+
+    <section>
+        <p>weblog works!&nbsp;&nbsp;{{msg}}</p>
+        <button (click)="onFinished()">確定</button>
+
+        <button (click)="onUpdate()">更新</button>
+
+    </section>
+
 
 </div>
