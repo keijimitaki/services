@@ -1,0 +1,64 @@
+/*■■コンテンツM■■*/
+
+.content_m {
+  position: relative;
+  overflow: hidden;
+	width:100%;
+	background-position:center center ;
+	vertical-align:middle;
+	background-attachment:fixed;
+	padding-top:25px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#con_m{
+margin:0 auto;
+}
+
+// #con_m .lov_block > * {
+// 	margin: 3px 15px;
+// }
+
+.m-box{
+float:left;
+overflow: hidden;
+padding:10px;
+margin:5px;
+}
+
+// .m-box span{
+// 	position:absolute;
+// 	top:0px;
+// 	right:0px;
+// 	font-size:12px;
+// 	padding:0px 2px 0px 2px ;
+// }
+
+.m-box span{
+	//position:absolute;
+	// top:0px;
+	// right:0px;
+	padding: 0 0 20px 20px;
+	font-size:12px;
+	padding:0px 2px 0px 2px ;
+}
+
+
+.con_m1{
+	margin-top:15px;
+	font-weight:normal;
+	font-size:20px;
+	line-height:1.2em;
+	text-align:center;
+}
+.con_m2{
+	margin-top:10px;
+	font-size:16px;
+	line-height:1.2em;
+}
+.con_m3{
+	margin-top:15px;
+	text-align:center;
+}
