@@ -1,0 +1,2208 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-17 11:30+0900\n"
+"PO-Revision-Date: 2021-06-17 11:33+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: pp\n"
+"X-Poedit-SearchPathExcluded-1: css\n"
+"X-Poedit-SearchPathExcluded-2: image\n"
+"X-Poedit-SearchPathExcluded-3: js\n"
+"X-Poedit-SearchPathExcluded-4: languages\n"
+
+#: lib/MtssbCalendarView.php:58 lib/MtssbCalendarView.php:80
+#: lib/MtssbCalendarView.php:85
+msgid "F, Y"
+msgstr ""
+
+#: lib/MtssbCalendarView.php:156
+msgid "Time"
+msgstr "時間"
+
+#: lib/MtssbCalendarView.php:159 mtssb-options.php:322
+msgid "Booking"
+msgstr "予約"
+
+#: mts-simple-booking.php:354
+msgid "MTS Simple Booking"
+msgstr "MTS予約システム"
+
+#: mts-simple-booking.php:354
+msgid "Simple Booking"
+msgstr "予約システム"
+
+#: mts-simple-booking.php:356 mtssb-calendar-widget.php:72
+msgid "Calendar"
+msgstr "予約カレンダー"
+
+#: mts-simple-booking.php:359
+msgid "List Booking"
+msgstr "予約リスト"
+
+#: mts-simple-booking.php:362
+msgid "Add & Edit"
+msgstr "追加・編集"
+
+#: mts-simple-booking.php:365
+msgid "Schedule"
+msgstr "スケジュール"
+
+#: mts-simple-booking.php:368
+msgid "Option"
+msgstr "オプション設定"
+
+#: mts-simple-booking.php:371 mtssb-mail-template-admin.php:155
+msgid "Mail Template"
+msgstr "メールテンプレート"
+
+#: mts-simple-booking.php:374
+msgid "Settings"
+msgstr "各種設定"
+
+#: mtssb-article-admin.php:101
+msgid "Booking Timetable"
+msgstr "予約時間割"
+
+#: mtssb-article-admin.php:103
+msgid "Booking Provisions"
+msgstr "予約条件設定"
+
+#: mtssb-article-admin.php:105
+msgid "Booking Charge"
+msgstr "予約の料金"
+
+#: mtssb-article-admin.php:107
+msgid "Booking Miscellaneous"
+msgstr "予約処理設定"
+
+#: mtssb-article-admin.php:127
+msgid "Start Time"
+msgstr "スタート時間"
+
+#: mtssb-article-admin.php:131 mtssb-article-admin.php:371
+#: mtssb-settings-admin.php:461
+msgid "Hour"
+msgstr "時"
+
+#: mtssb-article-admin.php:134 mtssb-article-admin.php:373
+#: mtssb-settings-admin.php:464 mtssb-settings-admin.php:495
+msgid "Minute"
+msgstr "分"
+
+#: mtssb-article-admin.php:134
+msgid "Add time"
+msgstr "時間割追加"
+
+#: mtssb-article-admin.php:135
+msgid "The reservation time of this reservation item."
+msgstr "この予約品目の予約時間です。"
+
+#: mtssb-article-admin.php:141 mtssb-article-admin.php:145
+#: mtssb-article-admin.php:149 mtssb-booking-admin.php:197
+#: mtssb-calendar-admin.php:590 mtssb-list-admin.php:952
+#: mtssb-mail-template-admin.php:169 mtssb-option-admin.php:388
+#: mtssb-option-admin.php:591 mtssb-option-admin.php:623
+#: mtssb-option-admin.php:929 mtssb-option-admin.php:942
+msgid "Delete"
+msgstr "削除"
+
+#: mtssb-article-admin.php:188 mtssb-article-admin.php:579
+msgid "Restriction"
+msgstr "制約タイプ"
+
+#: mtssb-article-admin.php:191
+msgid "Capacity"
+msgstr "収容人数"
+
+#: mtssb-article-admin.php:192
+msgid "Quantity"
+msgstr "予約件数"
+
+#: mtssb-article-admin.php:194
+msgid "Choose the conditions which restrict reservation."
+msgstr ""
+"予約管理を予約人数(例：座席数など)でするか予約件数(例：室数など)でするかの選"
+"択です。"
+
+#: mtssb-article-admin.php:198 mtssb-article-admin.php:580
+msgid "Fixed Number"
+msgstr "定員数"
+
+#: mtssb-article-admin.php:200 mtssb-article-admin.php:214
+#: mtssb-article-admin.php:221
+msgid "Persons"
+msgstr "人"
+
+#: mtssb-article-admin.php:201
+msgid "The maximum number which accepts this reservation item."
+msgstr "人数管理の場合の受付最大人数(単位：人/時間割１コマ)。"
+
+#: mtssb-article-admin.php:205 mtssb-article-admin.php:581
+msgid "Booking Limit"
+msgstr "予約上限"
+
+#: mtssb-article-admin.php:207
+msgid "Items"
+msgstr "件"
+
+#: mtssb-article-admin.php:208
+msgid "The maximum reservation number which accepts reservation."
+msgstr "件数管理の場合の受付最大件数(単位：件/時間割１コマ)。"
+
+#: mtssb-article-admin.php:212 mtssb-article-admin.php:582
+msgid "Minimum Entry"
+msgstr "最少人数"
+
+#: mtssb-article-admin.php:215
+msgid "The minimum acceptance number required for one reservation."
+msgstr "予約１件の時の必要最小人数です。"
+
+#: mtssb-article-admin.php:219 mtssb-article-admin.php:583
+msgid "Maximum Entry"
+msgstr "最大人数"
+
+#: mtssb-article-admin.php:222
+msgid ""
+"The number in which the maximum acceptance of one reservation is possible."
+msgstr "予約１件のときの上限最大人数です。"
+
+#: mtssb-article-admin.php:226
+msgid "Count Rate"
+msgstr "人数計算乗率"
+
+#: mtssb-article-admin.php:228 mtssb-article-admin.php:256
+msgid "Adult: "
+msgstr "大人："
+
+#: mtssb-article-admin.php:229 mtssb-article-admin.php:257
+msgid "Child: "
+msgstr "小人："
+
+#: mtssb-article-admin.php:230 mtssb-article-admin.php:258
+msgid "Baby: "
+msgstr "幼児："
+
+#: mtssb-article-admin.php:231
+msgid "Calculation rates when calculating the number."
+msgstr ""
+"人数計算するとき、例えば小人0.5なら2人で予約1人として扱います(少数以下切り捨"
+"て)。"
+
+#: mtssb-article-admin.php:254
+msgid "Unit Price"
+msgstr "単価"
+
+#: mtssb-article-admin.php:259
+msgid "Booking: "
+msgstr "予約："
+
+#: mtssb-article-admin.php:260
+msgid "Set unit price of each class or be able to charge only this booking."
+msgstr ""
+"各人員クラスに単価を設定したり、あるいは予約に料金設定することができます。"
+
+#: mtssb-article-admin.php:306 mtssb-article-admin.php:584
+msgid "Option Settings"
+msgstr "オプション有無"
+
+#: mtssb-article-admin.php:309
+msgid "Selection of whether to use an additional option."
+msgstr "予約の際、オプション注文ができるようになります。"
+
+#: mtssb-article-admin.php:313 mtssb-option-admin.php:455
+#: mtssb-option-admin.php:510
+msgid "Option group"
+msgstr "オプショングループ"
+
+#: mtssb-article-admin.php:316
+msgid "Select option"
+msgstr "オプションの選択"
+
+#: mtssb-article-admin.php:323
+msgid "Select a option group for this article."
+msgstr "この予約品目のオプショングループを選択して下さい。"
+
+#: mtssb-article-admin.php:327
+msgid "Cancel Limit Date"
+msgstr "キャンセル受付期限"
+
+#: mtssb-article-admin.php:331 mtssb-article-admin.php:367
+#: mtssb-settings-admin.php:456
+msgid "before"
+msgstr "前"
+
+#: mtssb-article-admin.php:332
+msgid "Limited time to be able to accept canceling except unavailable."
+msgstr "キャンセルを受け付ける期限を設定します。"
+
+#: mtssb-article-admin.php:336
+msgid "Position Of The Option"
+msgstr "オプションのフォーム表示位置"
+
+#: mtssb-article-admin.php:339
+msgid "Before"
+msgstr "前方"
+
+#: mtssb-article-admin.php:340
+msgid "After"
+msgstr "後方"
+
+#: mtssb-article-admin.php:342
+msgid "Select the position of the option's field on a booking form page."
+msgstr ""
+"予約フォームでオプション入力フィールドの場所を予約者情報の前か後か選択しま"
+"す。"
+
+#: mtssb-article-admin.php:346
+msgid "Auto Booking Mail Address"
+msgstr "自動予約メールアドレス"
+
+#: mtssb-article-admin.php:349
+msgid ""
+"Set auto booking mail address when sending to the different address from the "
+"settings."
+msgstr ""
+"管理者宛予約メールを、設定と異なるメールアドレスにも送信するときセットしま"
+"す。"
+
+#: mtssb-article-admin.php:353
+msgid "Confirmation Mail"
+msgstr "予約確認完了メール"
+
+#: mtssb-article-admin.php:359
+msgid "Select a template for a sending confirmation mail."
+msgstr "予約確認完了メールのテンプレートを選択して下さい。"
+
+#: mtssb-article-admin.php:363 mtssb-settings-admin.php:274
+#: mtssb-settings-admin.php:312
+msgid "Awaking Mail"
+msgstr "予約通知メール"
+
+#: mtssb-article-admin.php:369
+msgid "Sending Time"
+msgstr "送信時刻"
+
+#: mtssb-article-admin.php:379
+msgid "Select sending time and a template to send E-Mail."
+msgstr "予約通知メールの送信時間とテンプレートを選択して下さい。"
+
+#: mtssb-article-admin.php:383
+msgid "Multiple Booking Check"
+msgstr "予約重複チェック"
+
+#: mtssb-article-admin.php:388
+msgid "Check Name"
+msgstr "名前"
+
+#: mtssb-article-admin.php:393
+msgid "Check Email"
+msgstr "Eメールアドレス"
+
+#: mtssb-article-admin.php:398
+msgid "Check Phone Number"
+msgstr "電話番号"
+
+#: mtssb-article-admin.php:400
+msgid ""
+"Check multiple bookings on the same date and time using checked input item."
+msgstr ""
+"同一日時で予約が重複しないか、チェックされた項目の入力値をAND検索します。"
+
+#: mtssb-article-admin.php:404
+msgid "Tracking Code"
+msgstr "挿入トラッキングコード"
+
+#: mtssb-article-admin.php:407
+msgid "Set tracking code when using affiliate. It's able to use %RESERVE_ID%."
+msgstr ""
+"アフィリエイトで予約完了画面に挿入するトラッキングコード。変数名「%RESERVE_ID"
+"%」を使って予約IDが挿入できます。"
+
+#: mtssb-article-admin.php:577 mtssb-calendar-admin.php:598
+#: mtssb-list-admin.php:879
+msgid "Article Name"
+msgstr "予約品目名"
+
+#: mtssb-article-admin.php:578
+msgid "Timetable"
+msgstr "時間割"
+
+#: mtssb-article-admin.php:634 mtssb-booking-admin.php:270
+#: mtssb-booking-admin.php:577 mtssb-settings-admin.php:677
+msgid "Nothing"
+msgstr "なし"
+
+#: mtssb-article-admin.php:652 mtssb-article-admin.php:672
+msgid "No use"
+msgstr "利用しない"
+
+#: mtssb-article-admin.php:653 mtssb-article-admin.php:675
+#: mtssb-settings-admin.php:1099
+msgid "3 Hours"
+msgstr "3時間"
+
+#: mtssb-article-admin.php:654 mtssb-article-admin.php:676
+#: mtssb-settings-admin.php:1100
+msgid "6 Hours"
+msgstr "6時間"
+
+#: mtssb-article-admin.php:655 mtssb-article-admin.php:677
+#: mtssb-settings-admin.php:1101
+msgid "12 Hours"
+msgstr "12時間"
+
+#: mtssb-article-admin.php:656 mtssb-article-admin.php:678
+#: mtssb-settings-admin.php:1102
+msgid "1 Day"
+msgstr "1日"
+
+#: mtssb-article-admin.php:657 mtssb-article-admin.php:679
+#: mtssb-settings-admin.php:1103
+msgid "2 Days"
+msgstr "2日"
+
+#: mtssb-article-admin.php:658 mtssb-article-admin.php:680
+#: mtssb-settings-admin.php:1104
+msgid "3 Days"
+msgstr "3日"
+
+#: mtssb-article-admin.php:659 mtssb-article-admin.php:681
+#: mtssb-settings-admin.php:1105
+msgid "4 Days"
+msgstr "4日"
+
+#: mtssb-article-admin.php:660 mtssb-article-admin.php:682
+#: mtssb-settings-admin.php:1106
+msgid "5 Days"
+msgstr "5日"
+
+#: mtssb-article-admin.php:661 mtssb-article-admin.php:683
+#: mtssb-settings-admin.php:1107
+msgid "6 Days"
+msgstr "6日"
+
+#: mtssb-article-admin.php:673 mtssb-settings-admin.php:1097
+msgid "30 Minutes"
+msgstr "30分"
+
+#: mtssb-article-admin.php:674 mtssb-settings-admin.php:1098
+msgid "1 Hour"
+msgstr "1時間"
+
+#: mtssb-article.php:55
+msgid "Booking Articles"
+msgstr "予約品目"
+
+#: mtssb-article.php:56 mtssb-scheduler-admin.php:353
+msgid "Booking Article"
+msgstr "予約品目"
+
+#: mtssb-article.php:57
+msgid "New Booking Article"
+msgstr "新規予約品目"
+
+#: mtssb-article.php:58
+msgid "Add New Booking Article"
+msgstr "予約品目の新規追加"
+
+#: mtssb-article.php:59
+msgid "Edit Booking Article"
+msgstr "予約品目編集"
+
+#: mtssb-booking-admin.php:123
+msgid "Booking data has been added."
+msgstr "予約品目データが新規追加されました。"
+
+#: mtssb-booking-admin.php:125
+msgid "Booking data has been failed to add."
+msgstr "予約品目データの新規追加ができませんでした。"
+
+#: mtssb-booking-admin.php:134
+msgid "Booking data has been saved."
+msgstr "予約品目データを保存しました。"
+
+#: mtssb-booking-admin.php:136
+msgid "Booking data has been failed to save."
+msgstr "予約品目データの保存ができませんでした。"
+
+#: mtssb-booking-admin.php:170 mtssb-booking-admin.php:185
+msgid "Edit Booking"
+msgstr "予約の編集"
+
+#: mtssb-booking-admin.php:170 mtssb-booking-admin.php:185
+#: mtssb-booking-admin.php:201 mtssb-booking-admin.php:546
+msgid "Add Booking"
+msgstr "予約の新規追加"
+
+#: mtssb-booking-admin.php:189
+msgid "Booking Confirmation:"
+msgstr "予約確認済み："
+
+#: mtssb-booking-admin.php:197 mtssb-calendar-admin.php:590
+#: mtssb-list-admin.php:952
+msgid "Do you really want to delete this booking?"
+msgstr "この予約を本当に削除してもいいですか?"
+
+#: mtssb-booking-admin.php:201
+msgid "Save Booking"
+msgstr "予約データ保存"
+
+#: mtssb-booking-admin.php:244
+msgid "Booking Data"
+msgstr "予約データ"
+
+#: mtssb-booking-admin.php:249 mtssb-booking-admin.php:558
+#: mtssb-list-admin.php:875
+msgid "Booking Date"
+msgstr "予約日"
+
+#: mtssb-booking-admin.php:261 mtssb-booking-admin.php:566
+msgid "Booking Event"
+msgstr "予約対象と時間"
+
+#: mtssb-booking-admin.php:282
+msgid "Attendance"
+msgstr "予約人数"
+
+#: mtssb-booking-admin.php:305
+msgid "Select Options"
+msgstr "オプション注文選択"
+
+#: mtssb-booking-admin.php:308
+msgid "The option which can be chosen has nothing."
+msgstr "オプションはありません。"
+
+#: mtssb-booking-admin.php:380
+msgid "Client Information"
+msgstr "お客様情報"
+
+#: mtssb-booking-admin.php:385 mtssb-calendar-admin.php:620
+#: mtssb-user-admin.php:63
+msgid "Company"
+msgstr "会社名"
+
+#: mtssb-booking-admin.php:393 mtssb-calendar-admin.php:624
+#: mtssb-list-admin.php:876 mtssb-option-admin.php:538
+msgid "Name"
+msgstr "名前"
+
+#: mtssb-booking-admin.php:396
+msgid "Family Name"
+msgstr "姓"
+
+#: mtssb-booking-admin.php:398 user-new.php:490
+msgid "First Name"
+msgstr "名"
+
+#: mtssb-booking-admin.php:404 mtssb-calendar-admin.php:628
+#: mtssb-user-admin.php:64
+msgid "Furigana"
+msgstr "フリガナ"
+
+#: mtssb-booking-admin.php:407
+msgid "Family Name Roman"
+msgstr "セイ"
+
+#: mtssb-booking-admin.php:409
+msgid "First Name Roman"
+msgstr "メイ"
+
+#: mtssb-booking-admin.php:415 mtssb-calendar-admin.php:632
+msgid "Birthday"
+msgstr "生年月日"
+
+#: mtssb-booking-admin.php:424 mtssb-calendar-admin.php:637
+msgid "Gender"
+msgstr "性別"
+
+#: mtssb-booking-admin.php:427 mtssb-booking-admin.php:473
+#: mtssb-settings-admin.php:761 mtssb-settings-admin.php:808
+msgid "Unnecessary"
+msgstr "不要"
+
+#: mtssb-booking-admin.php:428 mtssb-calendar-admin.php:638
+msgid "Female"
+msgstr "女性"
+
+#: mtssb-booking-admin.php:429 mtssb-calendar-admin.php:638
+msgid "Male"
+msgstr "男性"
+
+#: mtssb-booking-admin.php:442 mtssb-calendar-admin.php:645
+#: mtssb-settings-admin.php:334 mtssb-user-admin.php:65
+msgid "Postcode"
+msgstr "郵便番号"
+
+#: mtssb-booking-admin.php:453 mtssb-calendar-admin.php:649
+#: mtssb-mail-template-admin.php:272 mtssb-settings-admin.php:848
+#: mtssb-settings-admin.php:861
+msgid "Address"
+msgstr "住所"
+
+#: mtssb-booking-admin.php:462
+msgid "Phone number"
+msgstr "連絡先電話番号"
+
+#: mtssb-booking-admin.php:470 mtssb-calendar-admin.php:657
+msgid "Newuse"
+msgstr "新規利用"
+
+#: mtssb-booking-admin.php:474 mtssb-calendar-admin.php:658
+msgid "Yes"
+msgstr "はい"
+
+#: mtssb-booking-admin.php:475 mtssb-calendar-admin.php:658
+msgid "No"
+msgstr "いいえ"
+
+#: mtssb-booking-admin.php:480
+msgid "Numbers"
+msgstr "人数明細(メモ)"
+
+#: mtssb-booking-admin.php:491
+msgid "Transaction ID"
+msgstr "取引ID"
+
+#: mtssb-booking-admin.php:512 mtssb-booking-admin.php:517
+#: mtssb-option-admin.php:600 mtssb-option-admin.php:851
+#: mtssb-schedule-admin.php:227
+msgid "Note"
+msgstr "注記"
+
+#: mtssb-booking-admin.php:551
+msgid "Select article"
+msgstr "予約品目選択"
+
+#: mtssb-booking-admin.php:590
+msgid "Add booking"
+msgstr "予約を新規追加する"
+
+#: mtssb-calendar-admin.php:107 mtssb-list-admin.php:114
+#, php-format
+msgid "Booking ID:%d was deleted."
+msgstr "予約ID：%d は削除されました。"
+
+#: mtssb-calendar-admin.php:109 mtssb-list-admin.php:116
+msgid "Deleting the booking data was failed."
+msgstr "予約データの削除ができませんでした。"
+
+#: mtssb-calendar-admin.php:137 mtssb-calendar-admin.php:350
+#: mtssb-calendar-admin.php:586
+msgid "Reservation Calendar"
+msgstr "予約カレンダー"
+
+#: mtssb-calendar-admin.php:189
+msgid "View Booking"
+msgstr "表示する"
+
+#: mtssb-calendar-admin.php:323
+msgid "To adjust booking has been failed."
+msgstr "予約受付数の調整に失敗しました。"
+
+#: mtssb-calendar-admin.php:327
+msgid "Booking has been adjusted right."
+msgstr "予約受付数が調整されました。"
+
+#: mtssb-calendar-admin.php:342
+msgid "Reservation Calendar > Day"
+msgstr "予約カレンダー　指定日"
+
+#: mtssb-calendar-admin.php:351
+msgid "Previous Day"
+msgstr "前日"
+
+#: mtssb-calendar-admin.php:352
+msgid "Next Day"
+msgstr "翌日"
+
+#: mtssb-calendar-admin.php:356 mtssb-calendar-admin.php:564
+msgid "F j, Y"
+msgstr "Y年n月j日"
+
+#: mtssb-calendar-admin.php:357
+msgid ""
+"The number of booking can be adjusted by setting a number to reduce to a "
+"text box."
+msgstr ""
+"テキストボックスに正数を入力して、予約の定員または件数を減らす事ができます。"
+
+#: mtssb-calendar-admin.php:395
+msgid "Not scheduled"
+msgstr "スケジュールが未登録です"
+
+#: mtssb-calendar-admin.php:399
+msgid "Inc & Dec:"
+msgstr "増減調整:"
+
+#: mtssb-calendar-admin.php:428 mtssb-calendar-admin.php:436
+#: mtssb-calendar-admin.php:625
+msgid "No Name"
+msgstr "名前なし"
+
+#: mtssb-calendar-admin.php:442
+msgid "Nobody Reserved"
+msgstr "予約なし"
+
+#: mtssb-calendar-admin.php:446
+msgid "Adjusted"
+msgstr "調整済み"
+
+#: mtssb-calendar-admin.php:455
+msgid "Adjust"
+msgstr "調整する"
+
+#: mtssb-calendar-admin.php:574 mtssb-list-admin.php:773
+#: mtssb-settings-admin.php:1118
+msgid "Yen"
+msgstr "円"
+
+#: mtssb-calendar-admin.php:574 mtssb-list-admin.php:773
+#: mtssb-settings-admin.php:1119
+msgid "US dollar"
+msgstr "USドル"
+
+#: mtssb-calendar-admin.php:581
+msgid "Reservation Calendar > Day > Booking"
+msgstr "予約カレンダー　指定日　予約詳細"
+
+#: mtssb-calendar-admin.php:587
+msgid "Reservation Day"
+msgstr "指定日"
+
+#: mtssb-calendar-admin.php:588 mtssb-list-admin.php:951
+#: mtssb-option-admin.php:498 mtssb-option-admin.php:928
+msgid "Edit"
+msgstr "編集"
+
+#: mtssb-calendar-admin.php:602
+msgid "Date Time"
+msgstr "日時"
+
+#: mtssb-calendar-admin.php:606 mtssb-calendar-admin.php:661
+#: mtssb-list-admin.php:878
+msgid "Number"
+msgstr "人数"
+
+#: mtssb-calendar-admin.php:610
+msgid "Options"
+msgstr "オプション"
+
+#: mtssb-calendar-admin.php:641 mtssb-mail-template-admin.php:275
+#: mtssb-settings-admin.php:344 mtssb-settings-admin.php:851
+#: mtssb-settings-admin.php:864
+msgid "E-Mail"
+msgstr ""
+
+#: mtssb-calendar-admin.php:653 mtssb-list-admin.php:877
+msgid "TEL"
+msgstr ""
+
+#: mtssb-calendar-admin.php:669 mtssb-settings-admin.php:290
+#: mtssb-settings-admin.php:328
+msgid "Message"
+msgstr "メッセージ"
+
+#: mtssb-calendar-admin.php:673
+msgid "Bill"
+msgstr "請求書"
+
+#: mtssb-calendar-admin.php:717
+msgid "PayPal Transaction ID"
+msgstr "PayPal 取引ID"
+
+#: mtssb-calendar-admin.php:721
+msgid "Created"
+msgstr "登録日時"
+
+#: mtssb-calendar-admin.php:725
+msgid "User Agent"
+msgstr "ブラウザー情報"
+
+#: mtssb-calendar-admin.php:729
+msgid "Remote Address"
+msgstr "接続先IPアドレス"
+
+#: mtssb-calendar-admin.php:734
+msgid "No Data"
+msgstr "データなし"
+
+#: mtssb-calendar-widget.php:29
+msgid "MTS Simple Booking Calendar"
+msgstr "MTSSB予約カレンダー"
+
+#: mtssb-calendar-widget.php:30
+msgid "The booking calendar is displayed in the side bar."
+msgstr "MTS Simple Bookingの予約カレンダーをウィジェット内に表示します。"
+
+#: mtssb-calendar-widget.php:84 mtssb-dailylink-widget.php:72
+msgid "Title:"
+msgstr "タイトル"
+
+#: mtssb-calendar-widget.php:88 mtssb-dailylink-widget.php:76
+msgid "ID:"
+msgstr "ID"
+
+#: mtssb-calendar-widget.php:92 mtssb-dailylink-widget.php:81
+msgid "Display Caption"
+msgstr "キャプション表示"
+
+#: mtssb-calendar-widget.php:97
+msgid "Booking Link"
+msgstr "予約リンク有り"
+
+#: mtssb-calendar-widget.php:102 mtssb-dailylink-widget.php:86
+msgid "Month Link"
+msgstr "月リンク表示"
+
+#: mtssb-calendar-widget.php:107
+msgid "Skip Timetable"
+msgstr "時間割スキップ"
+
+#: mtssb-calendar-widget.php:112
+msgid "Special Date"
+msgstr "特定年月指定"
+
+#: mtssb-calendar-widget.php:113 mtssb-scheduler-admin.php:303
+#: mtssb-scheduler-admin.php:360
+msgid "Year"
+msgstr "年"
+
+#: mtssb-calendar-widget.php:114 mtssb-scheduler-admin.php:433
+msgid "Month"
+msgstr "月"
+
+#: mtssb-calendar-widget.php:117 mtssb-dailylink-widget.php:98
+#: mtssb-schedule-admin.php:226
+msgid "Class Name"
+msgstr "class名"
+
+#: mtssb-calendar-widget.php:136
+msgid "Booking Calendar"
+msgstr "予約カレンダー"
+
+#: mtssb-dailylink-widget.php:34
+msgid "MTS Simple Booking Daily Link"
+msgstr "MTSSBミックスカレンダー"
+
+#: mtssb-dailylink-widget.php:35
+msgid ""
+"This is a month mix calendar in the side bar and replace to a daily on the "
+"page."
+msgstr ""
+"ミックスカレンダーの月カレンダーで、ショートコードを利用したページとリンクし"
+"て表示します。"
+
+#: mtssb-dailylink-widget.php:78
+msgid "The post ID of the page within a mix calendar shortcode."
+msgstr "ミックスカレンダーを指定したページのID"
+
+#: mtssb-dailylink-widget.php:88
+msgid "Down side"
+msgstr "下"
+
+#: mtssb-dailylink-widget.php:90
+msgid "Upper side"
+msgstr "上"
+
+#: mtssb-dailylink-widget.php:92
+msgid "Both side"
+msgstr "上下"
+
+#: mtssb-dailylink-widget.php:94
+msgid "Not display"
+msgstr "非表示"
+
+#: mtssb-front-freak.php:130 mtssb-front-freak.php:495 mtssb-front.php:126
+#: mtssb-front.php:368 mtssb-front.php:541 mtssb-front.php:786
+#: mtssb-front.php:1007 mtssb-scheduler-admin.php:115
+msgid "Not found any articles of reservation."
+msgstr "予約品目が見つかりませんでした。"
+
+#: mtssb-list-admin.php:142
+msgid "Booking List"
+msgstr "予約リスト"
+
+#: mtssb-list-admin.php:213
+msgid "Article:"
+msgstr "予約品目："
+
+#: mtssb-list-admin.php:224
+msgid "Select Article"
+msgstr "品目選択"
+
+#: mtssb-list-admin.php:227
+msgid "Change Date"
+msgstr "日付選択"
+
+#: mtssb-list-admin.php:231
+msgid "List Download"
+msgstr "CSVダウンロード"
+
+#: mtssb-list-admin.php:874
+msgid "ID"
+msgstr "予約ID"
+
+#: mtssb-list-admin.php:880
+msgid "Series Times"
+msgstr "延長数"
+
+#: mtssb-list-admin.php:881
+msgid "Paid"
+msgstr "支払"
+
+#: mtssb-list-admin.php:882
+msgid "Confirmed"
+msgstr "確認"
+
+#: mtssb-list-admin.php:883
+msgid "Date"
+msgstr "日付"
+
+#: mtssb-list-admin.php:950
+msgid "View"
+msgstr "表示"
+
+#: mtssb-mail-template-admin.php:80 mtssb-mail-template-admin.php:89
+msgid "The mail template has been saved."
+msgstr "テンプレートデータが保存されました。"
+
+#: mtssb-mail-template-admin.php:82
+msgid "Adding the new template has been failed."
+msgstr "新しいテンプレートが追加されました。"
+
+#: mtssb-mail-template-admin.php:91
+msgid "Saving the template has been failed."
+msgstr "テンプレートの保存が失敗しました。"
+
+#: mtssb-mail-template-admin.php:98
+msgid "The template has been deleted."
+msgstr "テンプレートは削除されました。"
+
+#: mtssb-mail-template-admin.php:100
+msgid "Deleting the template has been failed."
+msgstr "テンプレートの削除が失敗しました。"
+
+#: mtssb-mail-template-admin.php:167 mtssb-option-admin.php:387
+#: mtssb-scheduler-admin.php:316
+msgid "Save"
+msgstr "保存する"
+
+#: mtssb-mail-template-admin.php:169
+msgid "This template will be deleted."
+msgstr "このテンプレートを削除します。"
+
+#: mtssb-mail-template-admin.php:171
+msgid "Add new"
+msgstr "新規追加"
+
+#: mtssb-mail-template-admin.php:192
+msgid "Select templates"
+msgstr "テンプレート選択"
+
+#: mtssb-mail-template-admin.php:194
+msgid "Select"
+msgstr "選択"
+
+#: mtssb-mail-template-admin.php:210
+msgid "Any template has been not saved yet."
+msgstr "現在テンプレートデータは保存されていません。"
+
+#: mtssb-mail-template-admin.php:230
+msgid "Edit mail template"
+msgstr "テンプレートの編集"
+
+#: mtssb-mail-template-admin.php:234 mtssb-settings-admin.php:362
+#: mtssb-settings-admin.php:376
+msgid "Subject"
+msgstr "メール件名"
+
+#: mtssb-mail-template-admin.php:239
+msgid "It's the subject of this mail template."
+msgstr "メールの件名で、このテンプレート名です。"
+
+#: mtssb-mail-template-admin.php:244
+msgid "Mail body"
+msgstr "メール本文"
+
+#: mtssb-mail-template-admin.php:248
+msgid "It's the mail main sentence. Using under variables are available in it."
+msgstr "メール本文です。下記の変数が利用できます。"
+
+#: mtssb-mail-template-admin.php:266
+msgid "The following variables are available to use in a mail."
+msgstr "メール本文に以下の変数が利用できます。"
+
+#: mtssb-mail-template-admin.php:268 mtssb-settings-admin.php:844
+#: mtssb-settings-admin.php:858
+msgid "Reservation application guest's name."
+msgstr "入力された名前です。"
+
+#: mtssb-mail-template-admin.php:269 mtssb-settings-admin.php:845
+msgid "Reservation ID generated automatically in the booking mail only."
+msgstr "自動で付与される予約受付ID番号で予約メールに含めます。"
+
+#: mtssb-mail-template-admin.php:270 mtssb-settings-admin.php:846
+#: mtssb-settings-admin.php:859
+msgid "Shop Name"
+msgstr "施設名(店舗名)です。"
+
+#: mtssb-mail-template-admin.php:271 mtssb-settings-admin.php:847
+#: mtssb-settings-admin.php:860
+msgid "Post Code"
+msgstr "郵便番号です。"
+
+#: mtssb-mail-template-admin.php:273 mtssb-settings-admin.php:849
+#: mtssb-settings-admin.php:862
+msgid "TEL Number"
+msgstr "電話番号です。"
+
+#: mtssb-mail-template-admin.php:274 mtssb-settings-admin.php:850
+#: mtssb-settings-admin.php:863
+msgid "FAX Number"
+msgstr "FAX番号です。"
+
+#: mtssb-mail-template-admin.php:276 mtssb-settings-admin.php:852
+#: mtssb-settings-admin.php:865
+msgid "Web Site"
+msgstr "WebサイトURLです。"
+
+#: mtssb-option-admin.php:322
+msgid "Select Option Group"
+msgstr "オプショングループの選択"
+
+#: mtssb-option-admin.php:323 mtssb-option-admin.php:457
+#: mtssb-option-admin.php:505
+msgid "Add New"
+msgstr "新規追加"
+
+#: mtssb-option-admin.php:331
+msgid "Add a option group to click add button."
+msgstr "追加ボタンでオプショングループを追加します。"
+
+#: mtssb-option-admin.php:339
+msgid "Option Group"
+msgstr "オプショングループ"
+
+#: mtssb-option-admin.php:353
+msgid "Edit Name"
+msgstr "名称の編集"
+
+#: mtssb-option-admin.php:354
+msgid "List Option"
+msgstr "オプションリスト"
+
+#: mtssb-option-admin.php:364 mtssb-option-admin.php:458
+#: mtssb-option-admin.php:506
+msgid "Return"
+msgstr "戻る"
+
+#: mtssb-option-admin.php:370
+msgid "Group Key Name"
+msgstr "オプショングループのキー名"
+
+#: mtssb-option-admin.php:374
+msgid "It's used for distinguishing each option groups."
+msgstr "オプショングループの識別で利用します(半角英数字)。"
+
+#: mtssb-option-admin.php:379
+msgid "Group Title"
+msgstr "グループ名称"
+
+#: mtssb-option-admin.php:388
+msgid "Delete this option group?"
+msgstr "このオプショングループを削除しますか？"
+
+#: mtssb-option-admin.php:391 mtssb-option-admin.php:498
+msgid "Add"
+msgstr "追加する"
+
+#: mtssb-option-admin.php:407
+msgid "Option data has been added."
+msgstr "オプションデータが追加されました。"
+
+#: mtssb-option-admin.php:408
+msgid "Option data has been saved."
+msgstr "オプションデータが保存されました。"
+
+#: mtssb-option-admin.php:409
+msgid "Option data has been deleted."
+msgstr "オプションデータが削除されました。"
+
+#: mtssb-option-admin.php:410
+msgid "Option ID shouldn't be 0."
+msgstr "オプションID 0 は不可です。"
+
+#: mtssb-option-admin.php:411
+msgid "Option ID has been duplicated."
+msgstr "オプションIDが重複してます。"
+
+#: mtssb-option-admin.php:412
+msgid "Input only alphanumeric characters for key name."
+msgstr "項目のキー名は半角英数字で入力して下さい。"
+
+#: mtssb-option-admin.php:413
+msgid "Input only alphanumeric characters for the key name of field item."
+msgstr "フィールドの各項目キー名は半角英数字で入力して下さい。"
+
+#: mtssb-option-admin.php:415
+msgid "Empty is unable to set."
+msgstr "空設定はできません。"
+
+#: mtssb-option-admin.php:416
+msgid "The option name has been already."
+msgstr "このオプション名は登録済みです。"
+
+#: mtssb-option-admin.php:417
+msgid "The option name has not been found."
+msgstr "オプション名が見つかりませんでした。"
+
+#: mtssb-option-admin.php:418
+msgid "A new option group has been added."
+msgstr "新しいオプショングループが追加されました。"
+
+#: mtssb-option-admin.php:419
+msgid "The option group has been saved."
+msgstr "オプショングループが保存されました。"
+
+#: mtssb-option-admin.php:420
+msgid "The option group has been removed."
+msgstr "オプションデータが削除されました。"
+
+#: mtssb-option-admin.php:432
+msgid "Unknow result has been occured."
+msgstr "未定義エラーが発生しました。"
+
+#: mtssb-option-admin.php:449
+msgid "Option List"
+msgstr "オプション登録リスト"
+
+#: mtssb-option-admin.php:498
+msgid "Option Item"
+msgstr "オプション項目"
+
+#: mtssb-option-admin.php:516
+msgid "Order of display"
+msgstr "オプションID(表示の順番)"
+
+#: mtssb-option-admin.php:519
+msgid "It's not be able to use the same number."
+msgstr "同じ数値は使えません。"
+
+#: mtssb-option-admin.php:523 mtssb-option-admin.php:846
+#: mtssb-settings-admin.php:761 mtssb-settings-admin.php:808
+msgid "Required"
+msgstr "必須"
+
+#: mtssb-option-admin.php:527
+msgid "It's used for checking if this option is entered."
+msgstr "チェックをすると入力チェックで必須確認をします。"
+
+#: mtssb-option-admin.php:531 mtssb-option-admin.php:845
+msgid "Key Name"
+msgstr "項目のキー名"
+
+#: mtssb-option-admin.php:534
+msgid "It's used for distinguishing each options."
+msgstr "オプションの識別で利用します(半角英数字)。"
+
+#: mtssb-option-admin.php:544 mtssb-option-admin.php:580
+#: mtssb-option-admin.php:848
+msgid "Price"
+msgstr "金額"
+
+#: mtssb-option-admin.php:550 mtssb-option-admin.php:849
+msgid "Whose Cost"
+msgstr "料金対象"
+
+#: mtssb-option-admin.php:557
+msgid "Select the someone to cost."
+msgstr "料金の対象者を選択して下さい。"
+
+#: mtssb-option-admin.php:561 mtssb-option-admin.php:850
+msgid "Field Type"
+msgstr "フィールドタイプ"
+
+#: mtssb-option-admin.php:568
+msgid "Select this field type."
+msgstr "この項目のタイプを選択して下さい。"
+
+#: mtssb-option-admin.php:572
+msgid "Add a field"
+msgstr "項目追加"
+
+#: mtssb-option-admin.php:578
+msgid "Key name"
+msgstr "キー名"
+
+#: mtssb-option-admin.php:579
+msgid "Label name"
+msgstr "ラベル名"
+
+#: mtssb-option-admin.php:581
+msgid "Time needed"
+msgstr "予約延長数"
+
+#: mtssb-option-admin.php:595
+msgid "Type alphanumeric into a keyname."
+msgstr "キー名は半角英数字で入力して下さい。"
+
+#: mtssb-option-admin.php:608
+msgid "Save item"
+msgstr "編集保存する"
+
+#: mtssb-option-admin.php:608
+msgid "Add item"
+msgstr "新規追加する"
+
+#: mtssb-option-admin.php:844
+msgid "Option ID"
+msgstr "オプションID"
+
+#: mtssb-option-admin.php:847
+msgid "Option Name"
+msgstr "タイトル名"
+
+#: mtssb-options.php:299
+msgid "Number input"
+msgstr "数量入力"
+
+#: mtssb-options.php:300
+msgid "Text input"
+msgstr "テキスト入力"
+
+#: mtssb-options.php:301
+msgid "Radio button"
+msgstr "ラジオボタン"
+
+#: mtssb-options.php:302
+msgid "Select box"
+msgstr "セレクトボックス"
+
+#: mtssb-options.php:303
+msgid "Check box"
+msgstr "チェックボックス"
+
+#: mtssb-options.php:304
+msgid "Date input"
+msgstr "日付入力"
+
+#: mtssb-options.php:305
+msgid "Textarea input"
+msgstr "テキストエリア入力"
+
+#: mtssb-options.php:306
+msgid "Time input"
+msgstr "時刻入力"
+
+#: mtssb-options.php:318
+msgid "Everybody"
+msgstr "全員"
+
+#: mtssb-options.php:319 mtssb-settings-admin.php:529
+msgid "Adult"
+msgstr "大人"
+
+#: mtssb-options.php:320 mtssb-settings-admin.php:531
+msgid "Child"
+msgstr "小人"
+
+#: mtssb-options.php:321 mtssb-settings-admin.php:533
+msgid "Baby"
+msgstr "幼児"
+
+#: mtssb-schedule-admin.php:81 mtssb-scheduler-admin.php:82
+msgid "The exhibited reservation item data has nothing."
+msgstr "公開された予約品目は何もありません。"
+
+#: mtssb-schedule-admin.php:97 mtssb-scheduler-admin.php:93
+msgid "Schedule has been saved."
+msgstr "スケジュールは保存されました。"
+
+#: mtssb-schedule-admin.php:116 mtssb-scheduler-admin.php:292
+msgid "Schadule Management"
+msgstr "スケジュール管理"
+
+#: mtssb-schedule-admin.php:207
+msgid "Save Schedule"
+msgstr "スケジュール保存"
+
+#: mtssb-schedule-admin.php:214
+msgid "Calendar Note"
+msgstr "予約カレンダーメモ"
+
+#: mtssb-schedule-admin.php:215
+msgid "Note Content"
+msgstr "メモ内容"
+
+#: mtssb-schedule-admin.php:222
+msgid "Example:"
+msgstr "例："
+
+#: mtssb-schedule-admin.php:224
+msgid "Day"
+msgstr "日付"
+
+#: mtssb-schedule-admin.php:225
+msgid "Schedule Open"
+msgstr "予約受付"
+
+#: mtssb-schedule-admin.php:226
+msgid "Delta"
+msgstr "受付増減"
+
+#: mtssb-schedule-admin.php:256
+msgid "Reservation item and the year"
+msgstr "スケジューリングの予約品目と年月"
+
+#: mtssb-schedule-admin.php:269
+msgid "Year: "
+msgstr "年："
+
+#: mtssb-schedule-admin.php:280
+msgid "Month:"
+msgstr "月："
+
+#: mtssb-schedule-admin.php:291 mtssb-scheduler-admin.php:367
+msgid "Change"
+msgstr "変更する"
+
+#: mtssb-scheduler-admin.php:381
+msgid "Select Month"
+msgstr "月選択"
+
+#: mtssb-scheduler-admin.php:382 mtssb-scheduler-admin.php:389
+msgid "All"
+msgstr "全部"
+
+#: mtssb-scheduler-admin.php:388
+msgid "Select Week"
+msgstr "曜日選択"
+
+#: mtssb-scheduler-admin.php:395
+msgid "Close"
+msgstr "予約中止"
+
+#: mtssb-scheduler-admin.php:396
+msgid "Open"
+msgstr "予約受付"
+
+#: mtssb-scheduler-admin.php:399
+msgid "National Holidays"
+msgstr "祝祭日"
+
+#: mtssb-scheduler-admin.php:400
+msgid "Read"
+msgstr "読込む"
+
+#: mtssb-settings-admin.php:114
+msgid "Setting Parameters"
+msgstr "各種設定"
+
+#: mtssb-settings-admin.php:222
+msgid "Booking Paramters"
+msgstr "予約パラメータ"
+
+#: mtssb-settings-admin.php:223
+msgid "Premise Informations"
+msgstr "施設情報"
+
+#: mtssb-settings-admin.php:224
+msgid "Booking Mail"
+msgstr "予約メール"
+
+#: mtssb-settings-admin.php:225
+msgid "Contact Mail"
+msgstr "問合せメール"
+
+#: mtssb-settings-admin.php:226
+msgid "Miscellaneous"
+msgstr "その他"
+
+#: mtssb-settings-admin.php:227
+msgid "Charge Settings"
+msgstr "予約・料金設定"
+
+#: mtssb-settings-admin.php:228
+msgid "PayPal Config"
+msgstr "PayPal 設定"
+
+#: mtssb-settings-admin.php:240
+msgid "Booking control parameters"
+msgstr "予約全般のパラメータ"
+
+#: mtssb-settings-admin.php:241
+msgid "Information of the premise"
+msgstr "施設(店舗)の情報"
+
+#: mtssb-settings-admin.php:242
+msgid "Reply mail sentences for booking"
+msgstr "予約のメール情報"
+
+#: mtssb-settings-admin.php:243
+msgid "Reply mail sentences for contact"
+msgstr "問い合わせのメール情報"
+
+#: mtssb-settings-admin.php:244
+msgid "Other settings"
+msgstr "その他設定"
+
+#: mtssb-settings-admin.php:245
+msgid "Charge information for web page and e-mail"
+msgstr "予約操作や料金、予約メールに追加する決済文に関わる設定"
+
+#: mtssb-settings-admin.php:246
+msgid "Configuration to use PayPal API"
+msgstr "PayPal API利用のための設定"
+
+#: mtssb-settings-admin.php:260 mtssb-settings-admin.php:298
+msgid "Booking available"
+msgstr "予約の受付"
+
+#: mtssb-settings-admin.php:262 mtssb-settings-admin.php:300
+msgid "Closed Page"
+msgstr "予約中止中のメッセージ"
+
+#: mtssb-settings-admin.php:264 mtssb-settings-admin.php:302
+msgid "Close accepting"
+msgstr "予約受付終了"
+
+#: mtssb-settings-admin.php:266 mtssb-settings-admin.php:304
+msgid "Cancel available"
+msgstr "キャンセル受付"
+
+#: mtssb-settings-admin.php:268 mtssb-settings-admin.php:306
+msgid "Output in the margin"
+msgstr "マージン出力"
+
+#: mtssb-settings-admin.php:270 mtssb-settings-admin.php:308
+msgid "Period"
+msgstr "予約受付期間"
+
+#: mtssb-settings-admin.php:272 mtssb-settings-admin.php:310
+msgid "Hedge"
+msgstr "予約受付境界"
+
+#: mtssb-settings-admin.php:276 mtssb-settings-admin.php:314
+msgid "Vacant Mark"
+msgstr "空きマーク"
+
+#: mtssb-settings-admin.php:278 mtssb-settings-admin.php:316
+msgid "Booked Mark"
+msgstr "予約受付マーク"
+
+#: mtssb-settings-admin.php:280 mtssb-settings-admin.php:318
+msgid "Low Mark"
+msgstr "残数少マーク"
+
+#: mtssb-settings-admin.php:282 mtssb-settings-admin.php:320
+msgid "Full Mark"
+msgstr "空きなしマーク"
+
+#: mtssb-settings-admin.php:284 mtssb-settings-admin.php:322
+msgid "Disable Mark"
+msgstr "不可マーク"
+
+#: mtssb-settings-admin.php:286 mtssb-settings-admin.php:324
+msgid "Vacant Rate"
+msgstr "空き率"
+
+#: mtssb-settings-admin.php:288 mtssb-settings-admin.php:326
+msgid "Count Number"
+msgstr "予約カウント"
+
+#: mtssb-settings-admin.php:332
+msgid "The name of premise"
+msgstr "施設名称"
+
+#: mtssb-settings-admin.php:336
+msgid "Address 1"
+msgstr "住所１"
+
+#: mtssb-settings-admin.php:338
+msgid "Address 2"
+msgstr "住所２(ビル名称など)"
+
+#: mtssb-settings-admin.php:340 mtssb-user-admin.php:68
+msgid "Tel"
+msgstr "電話番号"
+
+#: mtssb-settings-admin.php:342
+msgid "Fax"
+msgstr "FAX番号"
+
+#: mtssb-settings-admin.php:346
+msgid "Mobile Mail"
+msgstr "携帯電話メールアドレス"
+
+#: mtssb-settings-admin.php:348
+msgid "Web Site URL"
+msgstr "Webサイト"
+
+#: mtssb-settings-admin.php:350
+msgid "Postcode Retrieval"
+msgstr "郵便番号検索"
+
+#: mtssb-settings-admin.php:352
+msgid "Web API Key"
+msgstr "APIアクセスキー"
+
+#: mtssb-settings-admin.php:356
+msgid "Block Booking Mail"
+msgstr "予約の非通知"
+
+#: mtssb-settings-admin.php:358 mtssb-settings-admin.php:374
+msgid "Column Setting"
+msgstr "入力項目設定"
+
+#: mtssb-settings-admin.php:360
+msgid "Column Order"
+msgstr "入力項目並び"
+
+#: mtssb-settings-admin.php:364 mtssb-settings-admin.php:378
+msgid "Mail Header"
+msgstr "メール前文"
+
+#: mtssb-settings-admin.php:366 mtssb-settings-admin.php:380
+msgid "Mail Footer"
+msgstr "メール後文"
+
+#: mtssb-settings-admin.php:368
+msgid "Cancel Subject"
+msgstr "キャンセル文の件名"
+
+#: mtssb-settings-admin.php:370
+msgid "Cancel Body"
+msgstr "キャンセル文の本文"
+
+#: mtssb-settings-admin.php:384
+msgid "Admin Bar"
+msgstr "アドミンバー"
+
+#: mtssb-settings-admin.php:386
+msgid "Schedule Dialog"
+msgstr "スケジュールダイアログ"
+
+#: mtssb-settings-admin.php:388
+msgid "User Consent"
+msgstr "ユーザー登録の規約同意"
+
+#: mtssb-settings-admin.php:390
+msgid "Terms Of User"
+msgstr "ユーザー利用規約書URL"
+
+#: mtssb-settings-admin.php:392
+msgid "Registration Mail"
+msgstr "ユーザー登録メール"
+
+#: mtssb-settings-admin.php:396
+msgid "Accedence Checkbox"
+msgstr "同意要求チェックボックス"
+
+#: mtssb-settings-admin.php:398
+msgid "Terms and conditions URL"
+msgstr "同意文書のリンクURL"
+
+#: mtssb-settings-admin.php:400
+msgid "Charge List"
+msgstr "料金表"
+
+#: mtssb-settings-admin.php:402
+msgid "Currency Code"
+msgstr "通貨コード"
+
+#: mtssb-settings-admin.php:404
+msgid "Tax Notation"
+msgstr "消費税表記"
+
+#: mtssb-settings-admin.php:406
+msgid "Consumption tax(%)"
+msgstr "消費税率(単位%)"
+
+#: mtssb-settings-admin.php:408
+msgid "Payment Required"
+msgstr "決済処理必須"
+
+#: mtssb-settings-admin.php:410
+msgid "Checkout Function"
+msgstr "決済機能(PayPal)利用"
+
+#: mtssb-settings-admin.php:412
+msgid "Checkout Button"
+msgstr "PayPalボタンの画像"
+
+#: mtssb-settings-admin.php:414
+msgid "Not Paid Sentence"
+msgstr "未決済のメール文"
+
+#: mtssb-settings-admin.php:416
+msgid "Paid Sentence"
+msgstr "決済済みのメール文"
+
+#: mtssb-settings-admin.php:420
+msgid "API Username"
+msgstr "API 利用ユーザー名"
+
+#: mtssb-settings-admin.php:422
+msgid "API Password"
+msgstr "API 利用パスワード"
+
+#: mtssb-settings-admin.php:424
+msgid "Signature"
+msgstr "シグネチャー"
+
+#: mtssb-settings-admin.php:426
+msgid "HTTPS URL"
+msgstr "サイトHTTPS URL"
+
+#: mtssb-settings-admin.php:428
+msgid "Logo image URL"
+msgstr "表示ロゴURL"
+
+#: mtssb-settings-admin.php:430
+msgid "Use Sandbox"
+msgstr "サンドボックス利用"
+
+#: mtssb-settings-admin.php:446
+msgid "Uncheck to stop displaying and accepting reservations."
+msgstr "チェックを外すと予約カレンダーが表示されなくなります。"
+
+#: mtssb-settings-admin.php:450
+msgid "Input the closed message to display."
+msgstr "予約カレンダーの代わりに表示されます。"
+
+#: mtssb-settings-admin.php:465
+msgid ""
+"The accepting is closed under selected date and the time. This feature is "
+"available over a day."
+msgstr "１日以上前の受付終了は時刻の指定ができます。"
+
+#: mtssb-settings-admin.php:474
+msgid "Output mark"
+msgstr "表示マーク出力"
+
+#: mtssb-settings-admin.php:475
+msgid "Disable mark"
+msgstr "不可マーク"
+
+#: mtssb-settings-admin.php:476
+msgid "Mark out or disable in the margin of accepting."
+msgstr "予約受付開始までの予約カレンダーのマーク表示"
+
+#: mtssb-settings-admin.php:481
+msgid "months"
+msgstr "月"
+
+#: mtssb-settings-admin.php:482
+msgid "Number of months that you accept bookings in the future."
+msgstr "今日から何カ月先まで予約を受け付けるか期間を指定します。"
+
+#: mtssb-settings-admin.php:485
+msgid "Month hedge"
+msgstr "月最終日"
+
+#: mtssb-settings-admin.php:486
+msgid "Day hedge"
+msgstr "日付"
+
+#: mtssb-settings-admin.php:487
+msgid ""
+"Open booking in whole month or the day before of after the period month."
+msgstr ""
+"予約受付開始の受付境界(カレンダー表示)を月最終日とするか日付区切りとするか選"
+"択します。"
+
+#: mtssb-settings-admin.php:492
+msgid "Every hour"
+msgstr "毎時"
+
+#: mtssb-settings-admin.php:501
+msgid ""
+"If you need to send the email before booking date, set the checkbox please."
+msgstr "予約通知メールを送信する場合は設定して下さい。"
+
+#: mtssb-settings-admin.php:505
+msgid "The mark which shows that there are enough openings of reservation."
+msgstr ""
+"予約が空のとき指定した文字、またはHTML要素が予約カレンダーに表示されます。未"
+"入力なら残数が表示されます。"
+
+#: mtssb-settings-admin.php:509
+msgid "The mark which shows that there are some bookings."
+msgstr "予約が登録されると表示されます。未入力なら残数が表示されます。"
+
+#: mtssb-settings-admin.php:513
+msgid "The mark which shows that there are few openings of reservation."
+msgstr "予約残数が空き率を下回ると表示されます。未入力なら残数が表示されます。"
+
+#: mtssb-settings-admin.php:517
+msgid "The mark which shows that reservation is full and it cannot reserve."
+msgstr "予約残数がないとき表示されます。"
+
+#: mtssb-settings-admin.php:521
+msgid "The mark which shows not accepting reservation."
+msgstr "予約不可のときに表示されます。"
+
+#: mtssb-settings-admin.php:525
+msgid "Full mark is displayed until the rate becomes to the percentage."
+msgstr "ここで指定された空き率(%)以下で残数少マークを表示するようになります。"
+
+#: mtssb-settings-admin.php:535
+msgid "Car"
+msgstr "車"
+
+#: mtssb-settings-admin.php:536
+msgid "Checked items is included in reservation form page."
+msgstr "チェックされた項目が予約データの入力対象となります。"
+
+#: mtssb-settings-admin.php:540
+msgid "Entrance and exit schedule"
+msgstr "入退場予定入力"
+
+#: mtssb-settings-admin.php:541
+msgid "Check to use the input item of entrance and exit schedule time."
+msgstr "チェックすると予約フォームで入退場の入力項目が使用されます。"
+
+#: mtssb-settings-admin.php:564
+msgid "Enable"
+msgstr "可"
+
+#: mtssb-settings-admin.php:565
+msgid "Disable"
+msgstr "不可"
+
+#: mtssb-settings-admin.php:566
+msgid "Display adminbar out or not on front end page."
+msgstr "フロントエンド表示でアドミンバー表示の抑制指定"
+
+#: mtssb-settings-admin.php:569 mtssb-settings-admin.php:574
+#: mtssb-settings-admin.php:687
+msgid "Inactive"
+msgstr "無効"
+
+#: mtssb-settings-admin.php:570 mtssb-settings-admin.php:575
+#: mtssb-settings-admin.php:688
+msgid "Active"
+msgstr "有効"
+
+#: mtssb-settings-admin.php:571
+msgid "Selection of using dialog box when it is enterd a note."
+msgstr "スケジュールのメモ入力にダイアログボックスを使用するか指定します。"
+
+#: mtssb-settings-admin.php:576
+msgid "Demand agreement check of the user who read the terms of use."
+msgstr "以下のURLに掲載したユーザー利用規約書に同意するチェックを求めます。"
+
+#: mtssb-settings-admin.php:593
+msgid "Choose a template of user registration mail from the box above."
+msgstr "ユーザー登録後のメール送信で利用するテンプレートを選択します。"
+
+#: mtssb-settings-admin.php:625
+msgid "e.g. webmaster@example.com"
+msgstr "入力例：webmaster@example.com"
+
+#: mtssb-settings-admin.php:629
+msgid ""
+"A mobile phone will be mailed if its mail address is inputed, and "
+"reservation enters."
+msgstr ""
+"Webから予約された事を携帯電話で知りたい場合に入力して下さい(詳細はメールされ"
+"ません)。"
+
+#: mtssb-settings-admin.php:633
+msgid "e.g. http://www.example.com"
+msgstr "入力例：http://www.example.com"
+
+#: mtssb-settings-admin.php:658
+msgid "Customer can not proceed booking if not checked this."
+msgstr "チェックされない場合は予約処理を進められないようにします。"
+
+#: mtssb-settings-admin.php:662
+msgid "Terms and conditions page URL."
+msgstr "同意文書の表示ページのURL。"
+
+#: mtssb-settings-admin.php:667
+msgid "Check to display charge list at booking."
+msgstr "予約フォームや予約メールに料金情報を掲載します。"
+
+#: mtssb-settings-admin.php:674
+msgid "Select the currency code."
+msgstr "通貨を選択して下さい。"
+
+#: mtssb-settings-admin.php:678
+msgid "Included"
+msgstr "内税"
+
+#: mtssb-settings-admin.php:679
+msgid "Excluded"
+msgstr "外税"
+
+#: mtssb-settings-admin.php:680
+msgid "If tax-inclusive is selected, tax cost is not list up on the PayPal."
+msgstr "内税が選択された場合、PayPal決済で消費税の表示はありません。"
+
+#: mtssb-settings-admin.php:684
+msgid "Consumption tax rate."
+msgstr "消費税率を%で指定して下さい。"
+
+#: mtssb-settings-admin.php:689
+msgid "Zero Acceptable"
+msgstr "0円予約受付"
+
+#: mtssb-settings-admin.php:690
+msgid "Customer can not proceed booking without payment."
+msgstr "予約者は決済ボタンを除いて予約処理を進められないようにします。"
+
+#: mtssb-settings-admin.php:695
+msgid "Check if you use PayPal checkout. (e.g. www.example.com)"
+msgstr "PayPal決済を利用する場合はチェックして下さい。"
+
+#: mtssb-settings-admin.php:699
+msgid "Set the image URL to display which you use the button image of PayPals."
+msgstr "PayPalの決済画面へ移動するボタン画像のURLを設定します。"
+
+#: mtssb-settings-admin.php:703
+msgid ""
+"Sentence is included into booking mail if customer paid using paypal when "
+"booking."
+msgstr "予約と同時に決済を実行したお客様に送るメールに挿入する文書です。"
+
+#: mtssb-settings-admin.php:707
+msgid ""
+"Sentence is included into booking mail if customer not pay when booking."
+msgstr "決済をせずに予約を実行したお客様に送るメールに挿入する文書です。"
+
+#: mtssb-settings-admin.php:722
+msgid "PayPal API Username."
+msgstr "PayPal API アクセスユーザー名"
+
+#: mtssb-settings-admin.php:726
+msgid "PayPal API Password."
+msgstr "PayPal API アクセスユーザーのパスワード"
+
+#: mtssb-settings-admin.php:730
+msgid "PayPal API Signature."
+msgstr "PayPal API アクセスユーザーの認証コード"
+
+#: mtssb-settings-admin.php:734
+msgid "HTTPS URL of this web site."
+msgstr "本サイトをアクセスする際のHTTPS URL アドレスです。"
+
+#: mtssb-settings-admin.php:738
+msgid "HTTPS URL of the logo of your company."
+msgstr "PayPal 画面で表示するロゴマークのURLのHTTPSアドレスです。"
+
+#: mtssb-settings-admin.php:743
+msgid "Use the PayPal Sandbox."
+msgstr "接続URIをサンドボックスにします。"
+
+#: mtssb-settings-admin.php:758
+msgid "Check if the system does not send a booking mail to the customer."
+msgstr "予約メールを予約者へ送信しない場合はチェックして下さい。"
+
+#: mtssb-settings-admin.php:761 mtssb-settings-admin.php:808
+msgid "Arbitrary"
+msgstr "任意"
+
+#: mtssb-settings-admin.php:774
+msgid "These are order of input columns on the booking form."
+msgstr "予約フォームの入力項目の順番です。項目名をカンマ区切りで並べて下さい。"
+
+#: mtssb-settings-admin.php:778 mtssb-settings-admin.php:821
+msgid "The subject of the automatic reply mail when reserving on the site."
+msgstr "予約自動返信メールの件名です。"
+
+#: mtssb-settings-admin.php:782 mtssb-settings-admin.php:825
+msgid "Above sentence of the automatic reply mail."
+msgstr "自動返信メールで表示する前文です。"
+
+#: mtssb-settings-admin.php:786 mtssb-settings-admin.php:829
+msgid "Below sentence of the automatic reply mail."
+msgstr "自動返信メールで表示する後文です。"
+
+#: mtssb-settings-admin.php:790
+msgid "The subject of the automatic cancele mail."
+msgstr "自動返信するキャンセルメールの件名です。"
+
+#: mtssb-settings-admin.php:794
+msgid "Cancele mail sentence of the automatic reply mail."
+msgstr "自動返信するキャンセルメールの本文です。"
+
+#: mtssb-settings-admin.php:842 mtssb-settings-admin.php:856
+msgid "The following variables can be used in Mail Header and Footer."
+msgstr "以下の変数名をメール文に含める事ができます。"
+
+#: mtssb-settings-admin.php:853
+msgid "The URL to cancel the booking in the cancel mail only."
+msgstr "メールに添付するキャンセル実行のURLアドレスです。"
+
+#: mtssb-settings-admin.php:868
+msgid "The following variables can be used in the Paid Sentence."
+msgstr "決済済み挿入文書に次の変数が利用できます。"
+
+#: mtssb-settings-admin.php:870
+msgid "PayPal transaction ID when customer will have been paid."
+msgstr "お客様が決済を実行したときのPayPal 取引IDです。"
+
+#: mtssb-settings-admin.php:1096
+msgid "10 Minutes"
+msgstr "10分"
+
+#: mtssb-user-admin.php:66
+msgid "Address1"
+msgstr "住所1"
+
+#: mtssb-user-admin.php:67
+msgid "Address2"
+msgstr "住所2(建物名称,etc.)"
+
+#: mtssb-user.php:55
+msgid "Customer"
+msgstr "顧客"
+
+#: user-new.php:15 user-new.php:22 user-new.php:55 user-new.php:156
+msgid "You need a higher level of permission."
+msgstr ""
+
+#: user-new.php:16 user-new.php:56
+msgid "Sorry, you are not allowed to add users to this network."
+msgstr ""
+
+#: user-new.php:23 user-new.php:157
+msgid "Sorry, you are not allowed to create users."
+msgstr ""
+
+#: user-new.php:117
+#, php-format
+msgid ""
+"Hi,\n"
+"\n"
+"You've been invited to join '%1$s' at\n"
+"%2$s with the role of %3$s.\n"
+"\n"
+"Please click the following link to confirm the invite:\n"
+"%4$s"
+msgstr ""
+
+#: user-new.php:130
+#, php-format
+msgid "[%s] Joining Confirmation"
+msgstr ""
+
+#: user-new.php:222 user-new.php:344 user-new.php:453 user-new.php:579
+msgid "Add New User"
+msgstr ""
+
+#: user-new.php:230
+msgid ""
+"To add a new user to your site, fill in the form on this screen and click "
+"the Add New User button at the bottom."
+msgstr ""
+
+#: user-new.php:233
+msgid ""
+"Because this is a multisite installation, you may add accounts that already "
+"exist on the Network by specifying a username or email, and defining a role. "
+"For more options, such as specifying a password, you have to be a Network "
+"Administrator and use the hover link under an existing user&#8217;s name to "
+"Edit the user profile under Network Admin > All Users."
+msgstr ""
+
+#: user-new.php:234
+msgid ""
+"New users will receive an email letting them know they&#8217;ve been added "
+"as a user for your site. This email will also contain their password. Check "
+"the box if you don&#8217;t want the user to receive a welcome email."
+msgstr ""
+
+#: user-new.php:236
+msgid ""
+"New users are automatically assigned a password, which they can change after "
+"logging in. You can view or edit the assigned password by clicking the Show "
+"Password button. The username cannot be changed once the user has been added."
+msgstr ""
+
+#: user-new.php:238
+msgid ""
+"By default, new users will receive an email letting them know they&#8217;ve "
+"been added as a user for your site. This email will also contain a password "
+"reset link. Uncheck the box if you don&#8217;t want to send the new user a "
+"welcome email."
+msgstr ""
+
+#: user-new.php:241
+msgid ""
+"Remember to click the Add New User button at the bottom of this screen when "
+"you are finished."
+msgstr ""
+
+#: user-new.php:246
+msgid "Overview"
+msgstr ""
+
+#: user-new.php:254
+msgid "User Roles"
+msgstr ""
+
+#: user-new.php:255
+msgid ""
+"Here is a basic overview of the different user roles and the permissions "
+"associated with each one:"
+msgstr ""
+
+#: user-new.php:257
+msgid ""
+"Subscribers can read comments/comment/receive newsletters, etc. but cannot "
+"create regular site content."
+msgstr ""
+
+#: user-new.php:258
+msgid ""
+"Contributors can write and manage their posts but not publish posts or "
+"upload media files."
+msgstr ""
+
+#: user-new.php:259
+msgid ""
+"Authors can publish and manage their own posts, and are able to upload files."
+msgstr ""
+
+#: user-new.php:260
+msgid ""
+"Editors can publish posts, manage posts as well as manage other people&#8217;"
+"s posts, etc."
+msgstr ""
+
+#: user-new.php:261
+msgid "Administrators have access to all the administration features."
+msgstr ""
+
+#: user-new.php:267
+msgid "For more information:"
+msgstr ""
+
+#: user-new.php:268
+msgid ""
+"<a href=\"https://wordpress.org/support/article/users-add-new-screen/"
+"\">Documentation on Adding New Users</a>"
+msgstr ""
+
+#: user-new.php:269
+msgid "<a href=\"https://wordpress.org/support/\">Support</a>"
+msgstr ""
+
+#: user-new.php:303
+msgid ""
+"Invitation email sent to new user. A confirmation link must be clicked "
+"before their account is created."
+msgstr ""
+
+#: user-new.php:306
+msgid ""
+"Invitation email sent to user. A confirmation link must be clicked for them "
+"to be added to your site."
+msgstr ""
+
+#: user-new.php:309
+msgid "User has been added to your site."
+msgstr ""
+
+#: user-new.php:312
+msgid "Edit user"
+msgstr ""
+
+#: user-new.php:318
+msgid "That user is already a member of this site."
+msgstr ""
+
+#: user-new.php:321
+msgid "That user could not be added to this site."
+msgstr ""
+
+#: user-new.php:324
+msgid "User has been created, but could not be added to this site."
+msgstr ""
+
+#: user-new.php:327
+msgid "The requested user does not exist."
+msgstr ""
+
+#: user-new.php:330
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: user-new.php:335
+msgid "User added."
+msgstr ""
+
+#: user-new.php:346 user-new.php:385 user-new.php:446
+msgid "Add Existing User"
+msgstr ""
+
+#: user-new.php:388
+msgid ""
+"Enter the email address of an existing user on this network to invite them "
+"to this site. That person will be sent an email asking them to confirm the "
+"invite."
+msgstr ""
+
+#: user-new.php:389 user-new.php:485
+#, fuzzy
+#| msgid "Check Email"
+msgid "Email"
+msgstr "Eメールアドレス"
+
+#: user-new.php:392
+msgid ""
+"Enter the email address or username of an existing user on this network to "
+"invite them to this site. That person will be sent an email asking them to "
+"confirm the invite."
+msgstr ""
+
+#: user-new.php:393
+msgid "Email or Username"
+msgstr ""
+
+#: user-new.php:416 user-new.php:552
+msgid "Role"
+msgstr ""
+
+#: user-new.php:424 user-new.php:565
+msgid "Skip Confirmation Email"
+msgstr ""
+
+#: user-new.php:427 user-new.php:568
+msgid "Add the user without sending an email that requires their confirmation."
+msgstr ""
+
+#: user-new.php:456
+msgid "Create a brand new user and add them to this site."
+msgstr ""
+
+#: user-new.php:481
+msgid "Username"
+msgstr ""
+
+#: user-new.php:481 user-new.php:485 user-new.php:505 user-new.php:529
+msgid "(required)"
+msgstr ""
+
+#: user-new.php:494
+msgid "Last Name"
+msgstr ""
+
+#: user-new.php:498
+msgid "Website"
+msgstr ""
+
+#: user-new.php:504
+msgid "Password"
+msgstr ""
+
+#: user-new.php:510
+msgid "Show password"
+msgstr ""
+
+#: user-new.php:518
+msgid "Hide"
+msgstr ""
+
+#: user-new.php:522
+msgid "Cancel"
+msgstr ""
+
+#: user-new.php:529
+msgid "Repeat Password"
+msgstr ""
+
+#: user-new.php:535
+msgid "Confirm Password"
+msgstr ""
+
+#: user-new.php:539
+msgid "Confirm use of weak password"
+msgstr ""
+
+#: user-new.php:544
+msgid "Send User Notification"
+msgstr ""
+
+#: user-new.php:547
+msgid "Send the new user an email about their account."
+msgstr ""
+
+#~ msgid "Using CRON"
+#~ msgstr "CRONを使用"
+
+#~ msgid "Not send"
+#~ msgstr "送信しない"
+
+#~ msgid "Unavilable"
+#~ msgstr "利用不可"
+
+#~ msgid "The sample template has been failed to save."
+#~ msgstr "サンプルテンプレートの登録を失敗しました。"
+
+#~ msgid "Sample"
+#~ msgstr "サンプル"
+
+#~ msgid ""
+#~ "It gives the permission to cancel the booking from on the subscription "
+#~ "page."
+#~ msgstr ""
+#~ "フロントエンドで専用ページを利用して予約のキャンセルを有効にします。"
+
+#~ msgid "after"
+#~ msgstr "以降"
+
+#~ msgid "The reservation is started to accept after selected time."
+#~ msgstr "予約は指定された日時以降から受け付けが開始されます。"
+
+#~ msgid "Change date of list"
+#~ msgstr "リスト年月の変更"
+
+#~ msgid "Change monthly"
+#~ msgstr "年月を変更"
+
+#~ msgid "Default option list"
+#~ msgstr "オプション項目リスト"
+
+#~ msgid "Edit option item"
+#~ msgstr "オプション項目編集"
+
+#~ msgid "Add option item"
+#~ msgstr "オプション項目新規追加"
+
+#~ msgid "Setup Options"
+#~ msgstr "オプションの設定"
+
+#~ msgid "Selectable"
+#~ msgstr "選択肢表示"
+
+#~ msgid "It's excluded from options if it's unchecked."
+#~ msgstr "チェックを外すと選択肢から除外されます。"
+
+#~ msgid "Number of days after that day is start accepting reservations."
+#~ msgstr "今日から何日経過して予約受け付け開始するかのマージン日数です。"
+
+#~ msgid "Option Nothing"
+#~ msgstr "オプションなし"
+
+#~ msgid "Number of the option:"
+#~ msgstr "数量："
+
+#~ msgid "Option ID is already registered."
+#~ msgstr "オプションIDは登録済みです。"
+
+#~ msgid "Client"
+#~ msgstr "顧客"
