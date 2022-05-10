@@ -38,9 +38,6 @@ class EditorController extends Controller
         
         $now = new DateTime(); 
         $unixTime = $now->format('U');
-
-        // 1651970210
-        //dd($unixTime);
         
 
         $news = file_get_contents(storage_path() . "/app/public/news.json");
@@ -48,21 +45,45 @@ class EditorController extends Controller
 
         $updatedNews = [];
 
-        foreach($news['news'] as $row){
+        if(array_key_exists('news',$news)){
 
-            $updatedNews['news'][] = $row;
+            foreach($news['news'] as $row){
 
+                $updatedNews['news'][] = $row;
+    
+            };
+    
         }
+        
 
-        $updatedNews['news'][] = [
-            "seq" => $unixTime,
-            "title" => "テスト登録",
-            "message" => $request['message'],
-            "image" => "image3.jpg",
+        $newRow = [];
+        $newRow['seq'] = $unixTime;
+        $newRow['title'] = $request['title'];
+        $newRow['titleColor'] = $request['titleColor'];
+        $newRow['message'] = $request['message'];
+        $newRow['backGroundColor'] = $request['backGroundColor'];
+        $newRow['linkCheck'] = $request['linkCheck'];
+        $newRow['imageFileName'] = $request['imageFileName'];
+        $newRow['imageSize'] = $request['imageSize'];
 
-        ];
 
-        $bytes = file_put_contents(storage_path() . "/app/public/news.json", json_encode($updatedNews)); 
+        if($request->file){
+            $file_name = request()->file->getClientOriginalName();
+            //dd(request()->file);
+            
+
+            //request()->file('file')->storeAs('public/',$file_name);
+            request()->file('file')->storeAs('public/news_img/',$file_name);
+        
+            $newRow['image'] = $file_name;
+        }
+             
+
+        $updatedNews['news'][] = $newRow;
+
+        $bytes = file_put_contents(storage_path() . "/app/public/news.json", json_encode($updatedNews));
+        $news = file_get_contents(storage_path() . "/app/public/news.json");
+        print_r($news);
 
 
     }
@@ -75,6 +96,10 @@ class EditorController extends Controller
         $news = json_decode($news, true);
 
         $updatedNews = [];
+        
+        if(!array_key_exists('news',$news)){
+            return;
+        }
 
         foreach($news['news'] as $row){
 
@@ -85,8 +110,19 @@ class EditorController extends Controller
                 $row['message'] = $request['message'];
                 $row['backGroundColor'] = $request['backGroundColor'];
                 $row['linkCheck'] = $request['linkCheck'];
-                $row['imageFileName'] = $request['imageFileName'];
+                
                 $row['imageSize'] = $request['imageSize'];
+
+                if($request->file){
+                    $file_name = request()->file->getClientOriginalName();
+                    //dd(request()->file);
+                    
+                    //request()->file('file')->storeAs('public/',$file_name);
+                    request()->file('file')->storeAs('public/news_img/',$file_name);
+                
+                    $row['image'] = $file_name;
+                }
+             
 
             }
 

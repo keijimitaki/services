@@ -1,6 +1,8 @@
 <template>
 
 <div>
+
+<!--
         <section>
             <div class="content_m" style="background-image:url('./news_img/news_bg.jpg')">
             <div id="con_m" class="masonry" style="position: relative; height: 320px; width: 960px;">
@@ -41,6 +43,7 @@
             </div>  
         </section>
         <hr>
+-->        
         
         <section>
 
@@ -50,7 +53,9 @@
                
                     <div v-for="(news,index) in newsList" :key="index">
                         <span class="lov_block" href="https://dietacademy.co.jp/weblog/myfavoritewords20220419/" target="_blank">
-                            <div class="m-box masonry-brick" v-on:click="openNewsDetail(`${news.image_url}`)" style="margin: 3px 12px; width: 290px; height: 320px; background-color: rgb(255, 255, 204); color: rgb(0, 0, 0);">
+                            <div class="m-box masonry-brick" v-on:click="openNewsDetail(`${news.image_url}`)" style="margin: 3px 12px; width: 290px; height: 320px; color: rgb(0, 0, 0);" 
+                            v-bind:style="{'background-color': news.backGroundColor}" >
+                            
                             <!-- <div class="m-box masonry-brick" style="width: 290px; height: 290px; background-color: rgb(255, 255, 204); color: rgb(0, 0, 0); "> -->
                                 <button type="button" class="btn btn-sm btn-dark" v-on:click.stop="editNews(`${news.seq}`)" >編集</button>
                                 <button type="button" class="btn btn-sm btn-danger" v-on:click.stop="deleteNews(`${news.seq}`)">削除</button>
@@ -120,8 +125,15 @@
             </div>
             <div class="col">
                 <div class="row">
-                <input v-model="backGroundColor" placeholder="edit me">
-                <p>Message is: {{ backGroundColor }}</p>
+                    <input v-model="backGroundColor" placeholder="背景色を選択してください">
+                </div>
+                <div class="row">
+                    <span v-for="(pattern,index) in colorPattern" :key="index" class="m-1" 
+                        style="width:80px; hight:50px; background-color:#11ffee;" 
+                        v-bind:style="{'background-color': pattern}" 
+                        v-on:click="selectBackGroundColor(pattern)">
+                        {{pattern}}
+                    </span>
                 </div>
             </div>
         </div>
@@ -149,15 +161,22 @@
             </div>
             <div class="col">
                 <div class="row">
-                    <p><input type="file" @change="fileSelected" /></p>
+                    <div class="col">
+                        <p><input type="file" ref="preview" @change="fileSelected" /></p>
+                    </div>
+                    <div class="col" v-if="previewImage">
+                        <img :src="previewImage" style="width:100px; hight:100px;" />
+                    </div>
+
                     <button v-on:click="uploadImage">アップロード</button>
-                    
-                    <select v-model="imageSize">
-                        <option disabled value="">画像サイズ</option>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                    </select>
+                    <div class="col">
+                        <select v-model="imageSize">
+                            <option disabled value="">画像サイズ</option>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                        </select>
+                    </div>
                 </div>
 
             </div>
@@ -167,13 +186,15 @@
             <div class="row">
                 <img v-show="editingNewsImageExists" :src="`${editingNewsImage}`" width="50%"/>
             </div>
+
         </div>
 
         <div class="row justify-content-center my-1">
             <input type="checkbox" id="checkbox" v-model="confirmCheck">
             <label for="checkbox">{{ confirmCheck }}</label>
             
-            <button type="button" v-on:click="updateNews" class="btn btn-lg btn-primary mx-2" >登録</button>
+            <!-- <button type="button" v-on:click="updateNews" class="btn btn-lg btn-primary mx-2" >登録</button> -->
+            <button type="submit" class="btn btn-lg btn-primary mx-2" >登録</button>
             <button type="button" class="btn btn-lg btn-primary mx-2" >キャンセル</button>
 
 
@@ -199,6 +220,10 @@ export default {
 
         await axios.get('./api/news').then(res => {
             
+
+            if(!res.data.news){
+                return;
+            }
             res.data.news.forEach(element =>{
                 //const news = { seq: element.seq, image: element.image}
                 let row = element;
@@ -244,28 +269,110 @@ export default {
             confirmCheck: false,
             editingNewsImageExists: false,
             editingNewsImage: '',
+            previewImage: '',
+            colorPattern: ['#c5e1a5','#f8ffd7','#ffe082','#eeeeee','#b39ddb'],
+
+
         }
     },
 
     methods: {
-        submitForm() {
-            console.log(this.message);
+        async submitForm() {
 
-            axios.post('./add',{message:this.message}).then(res => {
-                console.log(res.data.news);
+            const formData = new FormData();
+            
+            formData.append('editingSeq',this.editingSeq);
+            formData.append('title',this.title);
+            formData.append('titleColor',this.titleColor);
+            formData.append('message',this.message);
+            formData.append('backGroundColor',this.backGroundColor);
+            formData.append('linkUrl',this.linkUrl);
+            formData.append('imageFileName',this.imageFileName);
+            formData.append('imageSize',this.imageSize);
+            if(this.fileInfo){
+                formData.append('file',this.fileInfo);
+                console.log('file exists');
+            }
 
-                res.data.news.forEach(element =>{
-                    //const news = { seq: element.seq, image: element.image}
-                    this.newsList.push(element);
+            //更新
+            if(this.editingSeq){
+                
+                await axios.post('/updateNews',formData).then(res =>{
+                    console.log(res);
 
-                })
-            });
+                    this.newsList = [];
+
+                    res.data.news.forEach(element =>{
+                        let row = element;
+
+                        row['image_url'] = `../public/news_img/${element.image}`;
+                        if(process.env.MIX_APP_ENV == 'local'){
+                            row['image_url'] = `../news_img/${element.image}`;
+                        }
+
+                        let messeges = '';
+                        if( element.message && element.message.length>0) {
+                            messeges = element.message.split('\n');
+
+                        } else {
+                            messeges = element.message;
+                        }
+                        row['messeges'] = messeges;
+
+                        this.newsList.push(row);
+
+
+                    });
+
+                    this.formReset();
+
+                });
+
+
+            } else {
+
+                await axios.post('./addNews',formData).then(res => {
+                    console.log(res.data.news);
+
+                    this.newsList = [];
+
+                    res.data.news.forEach(element =>{
+                        let row = element;
+
+                        row['image_url'] = `../public/news_img/${element.image}`;
+                        if(process.env.MIX_APP_ENV == 'local'){
+                            row['image_url'] = `../news_img/${element.image}`;
+                        }
+
+                        let messeges = '';
+                        if( element.message && element.message.length>0) {
+                            messeges = element.message.split('\n');
+
+                        } else {
+                            messeges = element.message;
+                        }
+                        row['messeges'] = messeges;
+
+                        this.newsList.push(row);
+
+                    });
+
+                    this.editingSeq = '';
+
+
+                });
+
+            }
+
 
         },
+
+
         openNewsDetail(url) {
             window.alert(url);
 
         },
+
         async deleteNews(seq) {
 
             if(confirm('削除してもいいですか')){
@@ -302,7 +409,7 @@ export default {
                 });
 
             }
-
+            
         },
 
 
@@ -315,9 +422,6 @@ export default {
 
             const editingNews = this.newsList.filter( function( value, index, array ) {
  
-                //インデックス番号を比較して重複データのみ排除
-                //return array.indexOf( value ) === index;
-                 console.log('value[seq] == ',value['seq'] );
                 if( seq ==  value['seq'] ) {
                     return true;
                 } else {
@@ -342,13 +446,22 @@ export default {
             
         },
 
+
+        async addNews(){
+            await axios.post('./add',{message:this.message}).then(res => {
+                console.log(res.data.news);
+
+                res.data.news.forEach(element =>{
+                    //const news = { seq: element.seq, image: element.image}
+                    this.newsList.push(element);
+
+                })
+            });
+
+        },
+
         uploadImage(event) {
 
-    //   const config = {
-    //     headers: {
-    //       'content-type': 'multipart/form-data'
-    //     }
-    //   };
             const formData = new FormData();
 
             formData.append('file',this.fileInfo);
@@ -362,64 +475,30 @@ export default {
         },
         
         fileSelected(event){
-            this.fileInfo = event.target.files[0]
-        },
+            this.fileInfo = event.target.files[0];
+           
+            //this.previewImage = event.target.files[0];
+            const file = this.$refs.preview.files[0];
 
-        upsert() {
+console.log(file);
 
-
-        },
-
-        addNews() {
+            this.previewImage = URL.createObjectURL(file);
             
-        },
+            //this.$refs.preview.value = "";
 
-        async updateNews() {
-
-            if(this.editingSeq){
-
-                const formData = new FormData();
-                
-                formData.append('editingSeq',this.editingSeq);
-                formData.append('title',this.title);
-                formData.append('titleColor',this.titleColor);
-                formData.append('message',this.message);
-                formData.append('backGroundColor',this.backGroundColor);
-                formData.append('linkUrl',this.linkUrl);
-                formData.append('imageFileName',this.imageFileName);
-                formData.append('imageSize',this.imageSize);
-
-                axios.post('/updateNews',formData).then(res =>{
-                    console.log(res);
-
-                    this.newsList = [];
-
-                    res.data.news.forEach(element =>{
-                        //const news = { seq: element.seq, image: element.image}
-                        let row = element;
-
-                        row['image_url'] = `../public/news_img/${element.image}`;
-                        if(process.env.MIX_APP_ENV == 'local'){
-                            row['image_url'] = `../news_img/${element.image}`;
-                        }
-
-                        let messeges = '';
-                        if( element.message && element.message.length>0) {
-                            messeges = element.message.split('\n');
-
-                        } else {
-                            messeges = element.message;
-                        }
-                        row['messeges'] = messeges;
-
-                        this.newsList.push(row);
-                    });
-
-                });
-
-            }
 
         },
+
+
+        async formReset() {
+            this.editingSeq = '';
+
+        },
+
+        selectBackGroundColor(color){
+            this.backGroundColor = color;
+
+        }
 
     }
     

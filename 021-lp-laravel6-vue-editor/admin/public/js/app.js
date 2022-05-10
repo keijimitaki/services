@@ -2119,6 +2119,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -2131,6 +2152,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               console.log('Component mounted. env', "local");
               _context.next = 3;
               return axios.get('./api/news').then(function (res) {
+                if (!res.data.news) {
+                  return;
+                }
+
                 res.data.news.forEach(function (element) {
                   //const news = { seq: element.seq, image: element.image}
                   var row = element;
@@ -2181,29 +2206,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       fileInfo: '',
       confirmCheck: false,
       editingNewsImageExists: false,
-      editingNewsImage: ''
+      editingNewsImage: '',
+      previewImage: '',
+      colorPattern: ['#c5e1a5', '#f8ffd7', '#ffe082', '#eeeeee', '#b39ddb']
     };
   },
   methods: {
     submitForm: function submitForm() {
       var _this2 = this;
-
-      console.log(this.message);
-      axios.post('./add', {
-        message: this.message
-      }).then(function (res) {
-        console.log(res.data.news);
-        res.data.news.forEach(function (element) {
-          //const news = { seq: element.seq, image: element.image}
-          _this2.newsList.push(element);
-        });
-      });
-    },
-    openNewsDetail: function openNewsDetail(url) {
-      window.alert(url);
-    },
-    deleteNews: function deleteNews(seq) {
-      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var formData;
@@ -2211,15 +2221,116 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                formData = new FormData();
+                formData.append('editingSeq', _this2.editingSeq);
+                formData.append('title', _this2.title);
+                formData.append('titleColor', _this2.titleColor);
+                formData.append('message', _this2.message);
+                formData.append('backGroundColor', _this2.backGroundColor);
+                formData.append('linkUrl', _this2.linkUrl);
+                formData.append('imageFileName', _this2.imageFileName);
+                formData.append('imageSize', _this2.imageSize);
+
+                if (_this2.fileInfo) {
+                  formData.append('file', _this2.fileInfo);
+                  console.log('file exists');
+                } //更新
+
+
+                if (!_this2.editingSeq) {
+                  _context2.next = 15;
+                  break;
+                }
+
+                _context2.next = 13;
+                return axios.post('/updateNews', formData).then(function (res) {
+                  console.log(res);
+                  _this2.newsList = [];
+                  res.data.news.forEach(function (element) {
+                    var row = element;
+                    row['image_url'] = "../public/news_img/".concat(element.image);
+
+                    if (true) {
+                      row['image_url'] = "../news_img/".concat(element.image);
+                    }
+
+                    var messeges = '';
+
+                    if (element.message && element.message.length > 0) {
+                      messeges = element.message.split('\n');
+                    } else {
+                      messeges = element.message;
+                    }
+
+                    row['messeges'] = messeges;
+
+                    _this2.newsList.push(row);
+                  });
+
+                  _this2.formReset();
+                });
+
+              case 13:
+                _context2.next = 17;
+                break;
+
+              case 15:
+                _context2.next = 17;
+                return axios.post('./addNews', formData).then(function (res) {
+                  console.log(res.data.news);
+                  _this2.newsList = [];
+                  res.data.news.forEach(function (element) {
+                    var row = element;
+                    row['image_url'] = "../public/news_img/".concat(element.image);
+
+                    if (true) {
+                      row['image_url'] = "../news_img/".concat(element.image);
+                    }
+
+                    var messeges = '';
+
+                    if (element.message && element.message.length > 0) {
+                      messeges = element.message.split('\n');
+                    } else {
+                      messeges = element.message;
+                    }
+
+                    row['messeges'] = messeges;
+
+                    _this2.newsList.push(row);
+                  });
+                  _this2.editingSeq = '';
+                });
+
+              case 17:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    openNewsDetail: function openNewsDetail(url) {
+      window.alert(url);
+    },
+    deleteNews: function deleteNews(seq) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var formData;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
                 if (!confirm('削除してもいいですか')) {
-                  _context2.next = 6;
+                  _context3.next = 6;
                   break;
                 }
 
                 _this3.editingSeq = seq;
                 formData = new FormData();
                 formData.append('editingSeq', _this3.editingSeq);
-                _context2.next = 6;
+                _context3.next = 6;
                 return axios.post('/deleteNews', formData).then(function (res) {
                   console.log(res);
                   _this3.newsList = [];
@@ -2247,10 +2358,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }))();
     },
     editNews: function editNews(seq) {
@@ -2259,10 +2370,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log('seq == ', seq);
       var editingNews = this.newsList.filter(function (value, index, array) {
-        //インデックス番号を比較して重複データのみ排除
-        //return array.indexOf( value ) === index;
-        console.log('value[seq] == ', value['seq']);
-
         if (seq == value['seq']) {
           return true;
         } else {
@@ -2284,12 +2391,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.editingNewsImageExists = true;
     },
+    addNews: function addNews() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return axios.post('./add', {
+                  message: _this4.message
+                }).then(function (res) {
+                  console.log(res.data.news);
+                  res.data.news.forEach(function (element) {
+                    //const news = { seq: element.seq, image: element.image}
+                    _this4.newsList.push(element);
+                  });
+                });
+
+              case 2:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
     uploadImage: function uploadImage(event) {
-      //   const config = {
-      //     headers: {
-      //       'content-type': 'multipart/form-data'
-      //     }
-      //   };
       var formData = new FormData();
       formData.append('file', this.fileInfo);
       console.log(formData);
@@ -2298,63 +2427,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     fileSelected: function fileSelected(event) {
-      this.fileInfo = event.target.files[0];
+      this.fileInfo = event.target.files[0]; //this.previewImage = event.target.files[0];
+
+      var file = this.$refs.preview.files[0];
+      console.log(file);
+      this.previewImage = URL.createObjectURL(file); //this.$refs.preview.value = "";
     },
-    upsert: function upsert() {},
-    addNews: function addNews() {},
-    updateNews: function updateNews() {
-      var _this4 = this;
+    formReset: function formReset() {
+      var _this5 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var formData;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
-                if (_this4.editingSeq) {
-                  formData = new FormData();
-                  formData.append('editingSeq', _this4.editingSeq);
-                  formData.append('title', _this4.title);
-                  formData.append('titleColor', _this4.titleColor);
-                  formData.append('message', _this4.message);
-                  formData.append('backGroundColor', _this4.backGroundColor);
-                  formData.append('linkUrl', _this4.linkUrl);
-                  formData.append('imageFileName', _this4.imageFileName);
-                  formData.append('imageSize', _this4.imageSize);
-                  axios.post('/updateNews', formData).then(function (res) {
-                    console.log(res);
-                    _this4.newsList = [];
-                    res.data.news.forEach(function (element) {
-                      //const news = { seq: element.seq, image: element.image}
-                      var row = element;
-                      row['image_url'] = "../public/news_img/".concat(element.image);
-
-                      if (true) {
-                        row['image_url'] = "../news_img/".concat(element.image);
-                      }
-
-                      var messeges = '';
-
-                      if (element.message && element.message.length > 0) {
-                        messeges = element.message.split('\n');
-                      } else {
-                        messeges = element.message;
-                      }
-
-                      row['messeges'] = messeges;
-
-                      _this4.newsList.push(row);
-                    });
-                  });
-                }
+                _this5.editingSeq = '';
 
               case 1:
               case "end":
-                return _context3.stop();
+                return _context5.stop();
             }
           }
-        }, _callee3);
+        }, _callee5);
       }))();
+    },
+    selectBackGroundColor: function selectBackGroundColor(color) {
+      this.backGroundColor = color;
     }
   }
 });
@@ -39391,10 +39489,6 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
     _c("section", [
       _c(
         "div",
@@ -39434,9 +39528,9 @@ var render = function () {
                           margin: "3px 12px",
                           width: "290px",
                           height: "320px",
-                          "background-color": "rgb(255, 255, 204)",
                           color: "rgb(0, 0, 0)",
                         },
+                        style: { "background-color": news.backGroundColor },
                         on: {
                           click: function ($event) {
                             return _vm.openNewsDetail("" + news.image_url)
@@ -39543,7 +39637,7 @@ var render = function () {
         ]
       ),
       _vm._v(" "),
-      _vm._m(1),
+      _vm._m(0),
     ]),
     _vm._v(" "),
     _c(
@@ -39659,7 +39753,7 @@ var render = function () {
                       expression: "backGroundColor",
                     },
                   ],
-                  attrs: { placeholder: "edit me" },
+                  attrs: { placeholder: "背景色を選択してください" },
                   domProps: { value: _vm.backGroundColor },
                   on: {
                     input: function ($event) {
@@ -39670,9 +39764,40 @@ var render = function () {
                     },
                   },
                 }),
-                _vm._v(" "),
-                _c("p", [_vm._v("Message is: " + _vm._s(_vm.backGroundColor))]),
               ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "row" },
+                _vm._l(_vm.colorPattern, function (pattern, index) {
+                  return _c(
+                    "span",
+                    {
+                      key: index,
+                      staticClass: "m-1",
+                      staticStyle: {
+                        width: "80px",
+                        hight: "50px",
+                        "background-color": "#11ffee",
+                      },
+                      style: { "background-color": pattern },
+                      on: {
+                        click: function ($event) {
+                          return _vm.selectBackGroundColor(pattern)
+                        },
+                      },
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(pattern) +
+                          "\n                    "
+                      ),
+                    ]
+                  )
+                }),
+                0
+              ),
             ]),
           ]),
           _vm._v(" "),
@@ -39762,56 +39887,70 @@ var render = function () {
             _vm._v(" "),
             _c("div", { staticClass: "col" }, [
               _c("div", { staticClass: "row" }, [
-                _c("p", [
-                  _c("input", {
-                    attrs: { type: "file" },
-                    on: { change: _vm.fileSelected },
-                  }),
+                _c("div", { staticClass: "col" }, [
+                  _c("p", [
+                    _c("input", {
+                      ref: "preview",
+                      attrs: { type: "file" },
+                      on: { change: _vm.fileSelected },
+                    }),
+                  ]),
                 ]),
+                _vm._v(" "),
+                _vm.previewImage
+                  ? _c("div", { staticClass: "col" }, [
+                      _c("img", {
+                        staticStyle: { width: "100px", hight: "100px" },
+                        attrs: { src: _vm.previewImage },
+                      }),
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("button", { on: { click: _vm.uploadImage } }, [
                   _vm._v("アップロード"),
                 ]),
                 _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.imageSize,
-                        expression: "imageSize",
-                      },
-                    ],
-                    on: {
-                      change: function ($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function (o) {
-                            return o.selected
-                          })
-                          .map(function (o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.imageSize = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+                _c("div", { staticClass: "col" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.imageSize,
+                          expression: "imageSize",
+                        },
+                      ],
+                      on: {
+                        change: function ($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function (o) {
+                              return o.selected
+                            })
+                            .map(function (o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.imageSize = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
                       },
                     },
-                  },
-                  [
-                    _c("option", { attrs: { disabled: "", value: "" } }, [
-                      _vm._v("画像サイズ"),
-                    ]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("A")]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("B")]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("C")]),
-                  ]
-                ),
+                    [
+                      _c("option", { attrs: { disabled: "", value: "" } }, [
+                        _vm._v("画像サイズ"),
+                      ]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("A")]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("B")]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("C")]),
+                    ]
+                  ),
+                ]),
               ]),
             ]),
           ]),
@@ -39879,8 +40018,7 @@ var render = function () {
               "button",
               {
                 staticClass: "btn btn-lg btn-primary mx-2",
-                attrs: { type: "button" },
-                on: { click: _vm.updateNews },
+                attrs: { type: "submit" },
               },
               [_vm._v("登録")]
             ),
@@ -39900,256 +40038,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", [
-      _c(
-        "div",
-        {
-          staticClass: "content_m",
-          staticStyle: { "background-image": "url('./news_img/news_bg.jpg')" },
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "masonry",
-              staticStyle: {
-                position: "relative",
-                height: "320px",
-                width: "960px",
-              },
-              attrs: { id: "con_m" },
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "lov_block",
-                  attrs: {
-                    href: "https://line.me/R/ti/p/%40378ntnxx",
-                    target: "_blank",
-                  },
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "m-box masonry-brick",
-                      staticStyle: {
-                        width: "290px",
-                        height: "290px",
-                        "background-color": "rgb(0, 51, 153)",
-                        color: "rgb(255, 255, 255)",
-                        position: "absolute",
-                        top: "0px",
-                        left: "0px",
-                      },
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: {
-                            color: "#FFFFFF",
-                            "background-color": "#FF0000",
-                          },
-                        },
-                        [_vm._v("LINE公式")]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "con_m3" }, [
-                        _c("img", {
-                          attrs: { src: "/news_img/image1.png", width: "60%" },
-                        }),
-                      ]),
-                      _c("p", { staticClass: "con_m1" }, [
-                        _vm._v("【LINE公式やってます】"),
-                        _c("br"),
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "con_m2" }, [
-                        _vm._v(
-                          "ダイエットアカデミー代表・上野が直接あなたのメッセージにお答えします(^^♪"
-                        ),
-                      ]),
-                    ]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "lov_block",
-                  attrs: {
-                    href: "http://dietacademy.co.jp/wp/voice/",
-                    target: "_blank",
-                  },
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "m-box masonry-brick",
-                      staticStyle: {
-                        width: "290px",
-                        height: "290px",
-                        "background-color": "rgb(212, 237, 244)",
-                        color: "rgb(0, 0, 0)",
-                        position: "absolute",
-                        top: "0px",
-                        left: "320px",
-                      },
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: {
-                            color: "#FFFFFF",
-                            "background-color": "#FF0000",
-                          },
-                        },
-                        [_vm._v("お客様の声")]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "con_m3" }, [
-                        _c("img", {
-                          attrs: { src: "/news_img/image2.jpg", width: "60%" },
-                        }),
-                      ]),
-                      _c("p", { staticClass: "con_m1" }, [
-                        _vm._v("体験者の方からの声はこちら"),
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "con_m2" }, [
-                        _vm._v("　看護師、ヨガ講師、女医、、、"),
-                        _c("br"),
-                        _vm._v(
-                          "\n                        健康の仕事に携わる方が増えています"
-                        ),
-                      ]),
-                    ]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "lov_block",
-                  attrs: {
-                    href: "https://dietacademy.co.jp/weblog/myfavoritewords20220419/",
-                    target: "_blank",
-                  },
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "m-box masonry-brick",
-                      staticStyle: {
-                        width: "290px",
-                        height: "290px",
-                        "background-color": "rgb(255, 255, 204)",
-                        color: "rgb(0, 0, 0)",
-                        position: "absolute",
-                        top: "0px",
-                        left: "640px",
-                      },
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: {
-                            color: "#FFFFFF",
-                            "background-color": "#003399",
-                          },
-                        },
-                        [_vm._v("ブログ")]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "con_m3" }, [
-                        _c("img", {
-                          attrs: { src: "/news_img/image3.jpg", width: "50%" },
-                        }),
-                      ]),
-                      _c("p", { staticClass: "con_m1" }, [
-                        _vm._v("【ブログ】"),
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "con_m2" }, [
-                        _vm._v("私を支える言葉たち"),
-                      ]),
-                    ]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "lov_block",
-                  attrs: {
-                    href: "https://dietacademy.co.jp/weblog/myfavoritewords20220419/",
-                    target: "_blank",
-                  },
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "m-box masonry-brick",
-                      staticStyle: {
-                        width: "290px",
-                        height: "290px",
-                        "background-color": "rgb(255, 255, 204)",
-                        color: "rgb(0, 0, 0)",
-                        position: "absolute",
-                        top: "0px",
-                        left: "640px",
-                      },
-                    },
-                    [
-                      _c(
-                        "span",
-                        {
-                          staticStyle: {
-                            color: "#FFFFFF",
-                            "background-color": "#003399",
-                          },
-                        },
-                        [_vm._v("ブログ")]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "con_m3" }, [
-                        _c("img", {
-                          attrs: { src: "/news_img/image3.jpg", width: "50%" },
-                        }),
-                      ]),
-                      _c("p", { staticClass: "con_m1" }, [
-                        _vm._v("【ブログ】"),
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "con_m2" }, [
-                        _vm._v("私を支える言葉たち"),
-                      ]),
-                    ]
-                  ),
-                ]
-              ),
-            ]
-          ),
-          _vm._v(" "),
-          _c("br", { attrs: { clear: "all" } }),
-        ]
-      ),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -52711,9 +52599,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\rehop\vscode_ws\rehop\php\cw021\admin\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\rehop\vscode_ws\rehop\php\cw021\admin\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\rehop\vscode_ws\rehop\php\cw021\admin\resources\sass\editor.scss */"./resources/sass/editor.scss");
+__webpack_require__(/*! C:\kg\00_cw\cw021\admin\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\kg\00_cw\cw021\admin\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\kg\00_cw\cw021\admin\resources\sass\editor.scss */"./resources/sass/editor.scss");
 
 
 /***/ })

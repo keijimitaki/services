@@ -34,7 +34,10 @@ Route::post('fileupload',function(){
     $file_name = request()->file->getClientOriginalName();
     //dd(request()->file);
 
+    //request()->file('file')->storeAs('public/',$file_name);
     request()->file('file')->storeAs('public/',$file_name);
+    
+    
     //Storage::disk('local')->put($file_name, request()->file);
 
     //Storage::put('file.jpg', 'ss');
@@ -42,7 +45,8 @@ Route::post('fileupload',function(){
 });
 
 
-Route::post('/add', 'EditorController@addNews')->name('add');
+//Route::post('/add', 'EditorController@addNews')->name('add');
 
+Route::post('/addNews', 'EditorController@addNews')->name('add');
 Route::post('/updateNews', 'EditorController@updateNews')->name('update');
 Route::post('/deleteNews', 'EditorController@deleteNews')->name('delete');
