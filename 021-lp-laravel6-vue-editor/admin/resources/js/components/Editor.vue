@@ -38,7 +38,7 @@
                                 
                                 <p class="con_m1" v-bind:style="{'color':news.titleColor, 'font-size':'20px'}">{{news.title}}</p>
                                 <p class="con_m2" v-for="message in news.messeges" :key="message"
-                                    v-bind:style="{'color':news.messageColor, 'font-size':'16px', 'line-height':'1.2em', 'margin':'0' }">
+                                    v-bind:style="{'color':news.messageColor, 'font-size':'16px', 'margin':'0' }">
                                     {{message}}
                                 </p>
                             </div>
