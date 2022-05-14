@@ -28,12 +28,6 @@ class EditorController extends Controller
         return view('editor');
     }
 
-    // public function fileupload(Request $request){
-
-    //     $file_name = $request->file->getClientOriginalName();
-    //     request()->file->storeAs('app/public/',$file_name);
-    // } 
-
     public function addNews(Request $request){
         
         $now = new DateTime(); 
@@ -57,27 +51,30 @@ class EditorController extends Controller
         
 
         $newRow = [];
-        $newRow['seq'] = $unixTime;
+        $newRow['id'] = $unixTime;
+        $newRow['displayOrder'] = $request['displayOrder'];
         $newRow['title'] = $request['title'];
         $newRow['titleColor'] = $request['titleColor'];
         $newRow['message'] = $request['message'];
-        $newRow['backGroundColor'] = $request['backGroundColor'];
+        $newRow['messageColor'] = $request['messageColor'];
+        $newRow['backgroundColor'] = $request['backgroundColor'];
         $newRow['linkCheck'] = $request['linkCheck'];
+        $newRow['linkUrl'] = $request['linkUrl'];
+
         $newRow['imageFileName'] = $request['imageFileName'];
         $newRow['imageSize'] = $request['imageSize'];
-
 
         if($request->file){
             $file_name = request()->file->getClientOriginalName();
             //dd(request()->file);
-            
-
             //request()->file('file')->storeAs('public/',$file_name);
             request()->file('file')->storeAs('public/news_img/',$file_name);
         
             $newRow['image'] = $file_name;
         }
-             
+        $newRow['tag'] = $request['tag'];
+        $newRow['tagColor'] = $request['tagColor'];
+        $newRow['tagBackgroundColor'] = $request['tagBackgroundColor'];
 
         $updatedNews['news'][] = $newRow;
 
@@ -91,7 +88,7 @@ class EditorController extends Controller
 
     public function updateNews(Request $request){
         
-        $editingSeq = $request['editingSeq'];
+        $editingId = $request['editingId'];
         $news = file_get_contents(storage_path() . "/app/public/news.json");
         $news = json_decode($news, true);
 
@@ -103,17 +100,26 @@ class EditorController extends Controller
 
         foreach($news['news'] as $row){
 
-            if($editingSeq == $row['seq']){
+            if($editingId == $row['id']){
 
+                $row['displayOrder'] = $request['displayOrder'];
                 $row['title'] = $request['title'];
                 $row['titleColor'] = $request['titleColor'];
                 $row['message'] = $request['message'];
-                $row['backGroundColor'] = $request['backGroundColor'];
+                $row['messageColor'] = $request['messageColor'];
+                $row['backgroundColor'] = $request['backgroundColor'];
                 $row['linkCheck'] = $request['linkCheck'];
-                
+                $row['linkUrl'] = $request['linkUrl'];
                 $row['imageSize'] = $request['imageSize'];
 
                 if($request->file){
+
+                    //変更前のファイルがあれば削除
+                    if(array_key_exists('image',$row)){
+                        $image = $row['image'];
+                        \Storage::disk('public')->delete('/news_img/'.$image);
+                    }
+
                     $file_name = request()->file->getClientOriginalName();
                     //dd(request()->file);
                     
@@ -122,9 +128,13 @@ class EditorController extends Controller
                 
                     $row['image'] = $file_name;
                 }
-             
-
+                $row['tag'] = $request['tag'];
+                $row['tagColor'] = $request['tagColor'];
+                $row['tagBackgroundColor'] = $request['tagBackgroundColor'];
+        
             }
+
+            //dd($row);
 
             $updatedNews['news'][] = $row;
 
@@ -138,23 +148,28 @@ class EditorController extends Controller
 
     public function deleteNews(Request $request){
         
-        $editingSeq = $request['editingSeq'];
+        $editingId = $request['editingId'];
         $news = file_get_contents(storage_path() . "/app/public/news.json");
         $news = json_decode($news, true);
-
-        //dd($editingSeq);
 
         $updatedNews = [];
 
         foreach($news['news'] as $row){
 
-            if($editingSeq != $row['seq']){
+            if($editingId != $row['id']){
                 $updatedNews['news'][] = $row;
+            
+            } else {
+
+                //ファイルがあれば削除
+                if(array_key_exists('image',$row)){
+                    $image = $row['image'];
+                    \Storage::disk('public')->delete('/news_img/'.$image);
+                }
+            
             }
 
         }
-
-        //dd($updatedNews);
 
         $bytes = file_put_contents(storage_path() . "/app/public/news.json", json_encode($updatedNews));
         $news = file_get_contents(storage_path() . "/app/public/news.json");

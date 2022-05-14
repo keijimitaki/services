@@ -21,15 +21,19 @@ class ApiController extends Controller
     }
 
     public function news() {
-        // $url = storage_path() . '/news.json';
-        // $json = file_get_contents($url);
-        // $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
         
         $news = file_get_contents(storage_path() . "/app/public/news.json");
+
+        if(!empty($news)){
+            $obj = json_decode($news);
+            $dispOrders = array_column($obj->news, 'displayOrder');
+            // displayOrder の昇順（SORT_ASC）に並び替える.
+            array_multisort($dispOrders, SORT_ASC, $obj->news);
+            $news = json_encode($obj);
+        }
+
         //echo "<pre>";
         print_r($news);
-
-        // return response()->$news;
     }
 
     
@@ -66,12 +70,6 @@ class ApiController extends Controller
         //echo "<pre>";
         print_r($news);
         
-        // $news = file_get_contents(storage_path() . "/app/public/news.json");
-        // dd($news);
-        //return $bytes;
-
-        //print_r($request);
-
     }
 
 

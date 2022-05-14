@@ -2140,6 +2140,129 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -2159,10 +2282,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res.data.news.forEach(function (element) {
                   //const news = { seq: element.seq, image: element.image}
                   var row = element;
-                  row['image_url'] = "../public/news_img/".concat(element.image);
+                  row['image_url'] = '';
 
-                  if (true) {
-                    row['image_url'] = "../news_img/".concat(element.image);
+                  if (element.image) {
+                    row['image_url'] = "../public/news_img/".concat(element.image);
+
+                    if (true) {
+                      row['image_url'] = "../news_img/".concat(element.image);
+                    }
+                  }
+
+                  if (element.linkUrl === null) {
+                    row['linkUrl'] = "";
                   }
 
                   var messeges = '';
@@ -2176,7 +2307,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   row['messeges'] = messeges;
 
                   _this.newsList.push(row);
+                }); //表示順で並び替え
+
+                //表示順で並び替え
+                var sortedNews = _this.newsList.sort(function (a, b) {
+                  return a.displayOrder < b.displayOrder ? -1 : 1;
                 });
+
+                _this.newsList = sortedNews;
               });
 
             case 3:
@@ -2193,13 +2331,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       newsList: [],
-      editingSeq: '',
-      selected: '',
+      id: '',
+      displayOrder: 1,
+      editingId: '',
       title: '',
-      titleColor: '',
+      titleColor: '#000000',
+      titleColorPattern: ['#000000', '#ffffff', '#ff0000', '#003399', '#009900'],
       message: '',
-      backGroundColor: '',
-      linkCheck: false,
+      messageColor: '#000000',
+      messageColorPattern: ['#000000', '#ffffff', '#ff0000', '#003399', '#009900'],
+      backgroundColor: '#ffffff',
       linkUrl: '',
       imageFileName: '',
       imageSize: '',
@@ -2208,7 +2349,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       editingNewsImageExists: false,
       editingNewsImage: '',
       previewImage: '',
-      colorPattern: ['#c5e1a5', '#f8ffd7', '#ffe082', '#eeeeee', '#b39ddb']
+      colorPattern: ['#ff0000', '#003399', '#ffffff', '#ffffcc', '#D4EDF4'],
+      tag: '',
+      tagColor: '#000000',
+      tagColorPattern: ['#000000', '#ffffff', '#ff0000', '#003399', '#009900'],
+      tagBackgroundColor: '#ffffff',
+      tagBackgroundColorPattern: ['#000000', '#ffffff', '#ff0000', '#003399', '#009900'],
+      notification: ''
     };
   },
   methods: {
@@ -2216,75 +2363,67 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var formData;
+        var formData, sortedNews;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                if (_this2.editingId) {
+                  _context2.next = 2;
+                  break;
+                }
+
+                return _context2.abrupt("return");
+
+              case 2:
+                if (_this2.confirmCheck) {
+                  _context2.next = 5;
+                  break;
+                }
+
+                window.alert('入力内容を確認して、内容確認にチェックをつけてください');
+                return _context2.abrupt("return");
+
+              case 5:
                 formData = new FormData();
-                formData.append('editingSeq', _this2.editingSeq);
+                formData.append('editingId', _this2.editingId);
                 formData.append('title', _this2.title);
+                formData.append('displayOrder', _this2.displayOrder);
                 formData.append('titleColor', _this2.titleColor);
                 formData.append('message', _this2.message);
-                formData.append('backGroundColor', _this2.backGroundColor);
+                formData.append('messageColor', _this2.messageColor);
+                formData.append('backgroundColor', _this2.backgroundColor);
                 formData.append('linkUrl', _this2.linkUrl);
                 formData.append('imageFileName', _this2.imageFileName);
                 formData.append('imageSize', _this2.imageSize);
 
                 if (_this2.fileInfo) {
-                  formData.append('file', _this2.fileInfo);
-                  console.log('file exists');
-                } //更新
+                  formData.append('file', _this2.fileInfo); // console.log('file exists');
+                }
 
+                formData.append('tag', _this2.tag);
+                formData.append('tagColor', _this2.tagColor);
+                formData.append('tagBackgroundColor', _this2.tagBackgroundColor);
 
-                if (!_this2.editingSeq) {
-                  _context2.next = 15;
+                if (!(_this2.editingId === '0')) {
+                  _context2.next = 25;
                   break;
                 }
 
-                _context2.next = 13;
-                return axios.post('/updateNews', formData).then(function (res) {
-                  console.log(res);
-                  _this2.newsList = [];
-                  res.data.news.forEach(function (element) {
-                    var row = element;
-                    row['image_url'] = "../public/news_img/".concat(element.image);
-
-                    if (true) {
-                      row['image_url'] = "../news_img/".concat(element.image);
-                    }
-
-                    var messeges = '';
-
-                    if (element.message && element.message.length > 0) {
-                      messeges = element.message.split('\n');
-                    } else {
-                      messeges = element.message;
-                    }
-
-                    row['messeges'] = messeges;
-
-                    _this2.newsList.push(row);
-                  });
-
-                  _this2.formReset();
-                });
-
-              case 13:
-                _context2.next = 17;
-                break;
-
-              case 15:
-                _context2.next = 17;
+                _context2.next = 23;
                 return axios.post('./addNews', formData).then(function (res) {
                   console.log(res.data.news);
                   _this2.newsList = [];
                   res.data.news.forEach(function (element) {
                     var row = element;
-                    row['image_url'] = "../public/news_img/".concat(element.image);
+                    row['image_url'] = '';
 
-                    if (true) {
-                      row['image_url'] = "../news_img/".concat(element.image);
+                    if (element.image) {
+                      row['image_url'] = "../public/news_img/".concat(element.image);
+
+                      if (true) {
+                        row['image_url'] = "../news_img/".concat(element.image);
+                      }
                     }
 
                     var messeges = '';
@@ -2299,10 +2438,61 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                     _this2.newsList.push(row);
                   });
-                  _this2.editingSeq = '';
+                  _this2.notification = 'ニュースを追加しました';
+                  _this2.editingId = '';
                 });
 
-              case 17:
+              case 23:
+                _context2.next = 27;
+                break;
+
+              case 25:
+                _context2.next = 27;
+                return axios.post('./updateNews', formData).then(function (res) {
+                  console.log(res);
+                  _this2.newsList = [];
+                  res.data.news.forEach(function (element) {
+                    var row = element;
+                    row['image_url'] = '';
+
+                    if (element.image) {
+                      row['image_url'] = "../public/news_img/".concat(element.image);
+
+                      if (true) {
+                        row['image_url'] = "../news_img/".concat(element.image);
+                      }
+                    }
+
+                    if (element.linkUrl === null) {
+                      row['linkUrl'] = "";
+                    }
+
+                    var messeges = '';
+
+                    if (element.message && element.message.length > 0) {
+                      messeges = element.message.split('\n');
+                    } else {
+                      messeges = element.message;
+                    }
+
+                    row['messeges'] = messeges;
+
+                    _this2.newsList.push(row);
+                  });
+                  _this2.notification = 'ニュースを更新しました';
+                  _this2.editingId = '';
+
+                  _this2.dataReset();
+                });
+
+              case 27:
+                //表示順で並び替え
+                sortedNews = _this2.newsList.sort(function (a, b) {
+                  return a.displayOrder < b.displayOrder ? -1 : 1;
+                });
+                _this2.newsList = sortedNews;
+
+              case 29:
               case "end":
                 return _context2.stop();
             }
@@ -2310,10 +2500,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    openNewsDetail: function openNewsDetail(url) {
-      window.alert(url);
-    },
-    deleteNews: function deleteNews(seq) {
+    deleteNews: function deleteNews(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
@@ -2327,19 +2514,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                _this3.editingSeq = seq;
+                _this3.editingId = id;
                 formData = new FormData();
-                formData.append('editingSeq', _this3.editingSeq);
+                formData.append('editingId', _this3.editingId);
                 _context3.next = 6;
-                return axios.post('/deleteNews', formData).then(function (res) {
-                  console.log(res);
+                return axios.post('./deleteNews', formData).then(function (res) {
                   _this3.newsList = [];
                   res.data.news.forEach(function (element) {
                     var row = element;
-                    row['image_url'] = "../public/news_img/".concat(element.image);
+                    row['image_url'] = '';
 
-                    if (true) {
-                      row['image_url'] = "../news_img/".concat(element.image);
+                    if (element.image) {
+                      row['image_url'] = "../public/news_img/".concat(element.image);
+
+                      if (true) {
+                        row['image_url'] = "../news_img/".concat(element.image);
+                      }
                     }
 
                     var messeges = '';
@@ -2354,6 +2544,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                     _this3.newsList.push(row);
                   });
+                  _this3.notification = 'ニュースを削除しました';
+                  _this3.editingId = '';
+
+                  _this3.dataReset();
                 });
 
               case 6:
@@ -2364,23 +2558,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    editNews: function editNews(seq) {
-      //window.alert(seq);
-      this.editingSeq = seq; // let editingNews = {};
-
-      console.log('seq == ', seq);
+    newEntry: function newEntry() {
+      this.dataReset();
+      this.editingId = '0';
+      this.notification = '';
+    },
+    editNews: function editNews(id) {
+      this.dataReset();
+      this.editingId = id;
+      this.notification = '';
       var editingNews = this.newsList.filter(function (value, index, array) {
-        if (seq == value['seq']) {
+        if (id === value['id']) {
           return true;
         } else {
           return false;
         }
-      });
-      console.log('editingSeq:', editingNews);
+      }); // console.log('editingNews:',editingNews);
+
+      this.id = editingNews[0]['id'];
+      this.displayOrder = editingNews[0]['displayOrder'];
       this.title = editingNews[0]['title'];
       this.titleColor = editingNews[0]['titleColor'];
       this.message = editingNews[0]['message'];
-      this.backGroundColor = editingNews[0]['backGroundColor'];
+      this.messageColor = editingNews[0]['messageColor'];
+      this.backgroundColor = editingNews[0]['backgroundColor'];
       this.linkUrl = editingNews[0]['linkUrl'];
       this.imageFileName = editingNews[0]['imageFileName'];
       this.editingNewsImage = "../public/news_img/".concat(editingNews[0]['image']);
@@ -2390,6 +2591,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       this.editingNewsImageExists = true;
+      this.tag = editingNews[0]['tag'];
+      this.tagColor = editingNews[0]['tagColor'];
+      this.tagBackgroundColor = editingNews[0]['tagBackgroundColor'];
     },
     addNews: function addNews() {
       var _this4 = this;
@@ -2430,29 +2634,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.fileInfo = event.target.files[0]; //this.previewImage = event.target.files[0];
 
       var file = this.$refs.preview.files[0];
-      console.log(file);
-      this.previewImage = URL.createObjectURL(file); //this.$refs.preview.value = "";
+      this.previewImage = URL.createObjectURL(file);
+      this.editingNewsImageExists = false;
     },
-    formReset: function formReset() {
-      var _this5 = this;
+    cancelEdit: function cancelEdit() {
+      var cancel = confirm('入力内容を破棄しますか');
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _this5.editingSeq = '';
-
-              case 1:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
-      }))();
+      if (cancel) {
+        this.editingId = '';
+      }
     },
-    selectBackGroundColor: function selectBackGroundColor(color) {
-      this.backGroundColor = color;
+    selectTitleColor: function selectTitleColor(color) {
+      this.titleColor = color;
+    },
+    selectMessageColor: function selectMessageColor(color) {
+      this.messageColor = color;
+    },
+    selectBackgroundColor: function selectBackgroundColor(color) {
+      this.backgroundColor = color;
+    },
+    selectTagColor: function selectTagColor(color) {
+      this.tagColor = color;
+    },
+    selectTagBackgroundColor: function selectTagBackgroundColor(color) {
+      this.tagBackgroundColor = color;
+    },
+    openNewsDetail: function openNewsDetail(url) {
+      if (url) {
+        window.open(url);
+      }
+    },
+    dataReset: function dataReset() {
+      this.id = '';
+      this.displayOrder = 1;
+      this.editingId = '';
+      this.title = '';
+      this.titleColor = '#000000';
+      this.title = '';
+      this.message = '';
+      this.messageColor = '#000000';
+      this.backgroundColor = '#ffffff';
+      this.linkUrl = '';
+      this.tag = '';
+      this.tagColor = '#000000';
+      this.tagBackgroundColor = '#ffffff';
+      this.imageFileName = '';
+      this.fileInfo = '';
+      this.previewImage = '';
+      this.editingNewsImageExists = false;
+      this.editingNewsImage = '';
+      this.confirmCheck = false;
     }
   }
 });
@@ -6855,112 +7086,6 @@ __webpack_require__.r(__webpack_exports__);
 
 }));
 //# sourceMappingURL=bootstrap.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-exports.push([module.i, "@import url(/css/editor.css);", ""]);
-
-// module
-exports.push([module.i, "\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/lib/css-base.js":
-/*!*************************************************!*\
-  !*** ./node_modules/css-loader/lib/css-base.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
 
 
 /***/ }),
@@ -38859,545 +38984,6 @@ try {
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--7-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/lib/addStyles.js":
-/*!****************************************************!*\
-  !*** ./node_modules/style-loader/lib/addStyles.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-
-var stylesInDom = {};
-
-var	memoize = function (fn) {
-	var memo;
-
-	return function () {
-		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-		return memo;
-	};
-};
-
-var isOldIE = memoize(function () {
-	// Test for IE <= 9 as proposed by Browserhacks
-	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-	// Tests for existence of standard globals is to allow style-loader
-	// to operate correctly into non-standard environments
-	// @see https://github.com/webpack-contrib/style-loader/issues/177
-	return window && document && document.all && !window.atob;
-});
-
-var getTarget = function (target, parent) {
-  if (parent){
-    return parent.querySelector(target);
-  }
-  return document.querySelector(target);
-};
-
-var getElement = (function (fn) {
-	var memo = {};
-
-	return function(target, parent) {
-                // If passing function in options, then use it for resolve "head" element.
-                // Useful for Shadow Root style i.e
-                // {
-                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
-                // }
-                if (typeof target === 'function') {
-                        return target();
-                }
-                if (typeof memo[target] === "undefined") {
-			var styleTarget = getTarget.call(this, target, parent);
-			// Special case to return head of iframe instead of iframe itself
-			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
-				try {
-					// This will throw an exception if access to iframe is blocked
-					// due to cross-origin restrictions
-					styleTarget = styleTarget.contentDocument.head;
-				} catch(e) {
-					styleTarget = null;
-				}
-			}
-			memo[target] = styleTarget;
-		}
-		return memo[target]
-	};
-})();
-
-var singleton = null;
-var	singletonCounter = 0;
-var	stylesInsertedAtTop = [];
-
-var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
-
-module.exports = function(list, options) {
-	if (typeof DEBUG !== "undefined" && DEBUG) {
-		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-	}
-
-	options = options || {};
-
-	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
-
-	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-	// tags it will allow on a page
-	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
-
-	// By default, add <style> tags to the <head> element
-        if (!options.insertInto) options.insertInto = "head";
-
-	// By default, add <style> tags to the bottom of the target
-	if (!options.insertAt) options.insertAt = "bottom";
-
-	var styles = listToStyles(list, options);
-
-	addStylesToDom(styles, options);
-
-	return function update (newList) {
-		var mayRemove = [];
-
-		for (var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-
-			domStyle.refs--;
-			mayRemove.push(domStyle);
-		}
-
-		if(newList) {
-			var newStyles = listToStyles(newList, options);
-			addStylesToDom(newStyles, options);
-		}
-
-		for (var i = 0; i < mayRemove.length; i++) {
-			var domStyle = mayRemove[i];
-
-			if(domStyle.refs === 0) {
-				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
-
-				delete stylesInDom[domStyle.id];
-			}
-		}
-	};
-};
-
-function addStylesToDom (styles, options) {
-	for (var i = 0; i < styles.length; i++) {
-		var item = styles[i];
-		var domStyle = stylesInDom[item.id];
-
-		if(domStyle) {
-			domStyle.refs++;
-
-			for(var j = 0; j < domStyle.parts.length; j++) {
-				domStyle.parts[j](item.parts[j]);
-			}
-
-			for(; j < item.parts.length; j++) {
-				domStyle.parts.push(addStyle(item.parts[j], options));
-			}
-		} else {
-			var parts = [];
-
-			for(var j = 0; j < item.parts.length; j++) {
-				parts.push(addStyle(item.parts[j], options));
-			}
-
-			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-		}
-	}
-}
-
-function listToStyles (list, options) {
-	var styles = [];
-	var newStyles = {};
-
-	for (var i = 0; i < list.length; i++) {
-		var item = list[i];
-		var id = options.base ? item[0] + options.base : item[0];
-		var css = item[1];
-		var media = item[2];
-		var sourceMap = item[3];
-		var part = {css: css, media: media, sourceMap: sourceMap};
-
-		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
-		else newStyles[id].parts.push(part);
-	}
-
-	return styles;
-}
-
-function insertStyleElement (options, style) {
-	var target = getElement(options.insertInto)
-
-	if (!target) {
-		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-	}
-
-	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
-
-	if (options.insertAt === "top") {
-		if (!lastStyleElementInsertedAtTop) {
-			target.insertBefore(style, target.firstChild);
-		} else if (lastStyleElementInsertedAtTop.nextSibling) {
-			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
-		} else {
-			target.appendChild(style);
-		}
-		stylesInsertedAtTop.push(style);
-	} else if (options.insertAt === "bottom") {
-		target.appendChild(style);
-	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
-		var nextSibling = getElement(options.insertAt.before, target);
-		target.insertBefore(style, nextSibling);
-	} else {
-		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
-	}
-}
-
-function removeStyleElement (style) {
-	if (style.parentNode === null) return false;
-	style.parentNode.removeChild(style);
-
-	var idx = stylesInsertedAtTop.indexOf(style);
-	if(idx >= 0) {
-		stylesInsertedAtTop.splice(idx, 1);
-	}
-}
-
-function createStyleElement (options) {
-	var style = document.createElement("style");
-
-	if(options.attrs.type === undefined) {
-		options.attrs.type = "text/css";
-	}
-
-	if(options.attrs.nonce === undefined) {
-		var nonce = getNonce();
-		if (nonce) {
-			options.attrs.nonce = nonce;
-		}
-	}
-
-	addAttrs(style, options.attrs);
-	insertStyleElement(options, style);
-
-	return style;
-}
-
-function createLinkElement (options) {
-	var link = document.createElement("link");
-
-	if(options.attrs.type === undefined) {
-		options.attrs.type = "text/css";
-	}
-	options.attrs.rel = "stylesheet";
-
-	addAttrs(link, options.attrs);
-	insertStyleElement(options, link);
-
-	return link;
-}
-
-function addAttrs (el, attrs) {
-	Object.keys(attrs).forEach(function (key) {
-		el.setAttribute(key, attrs[key]);
-	});
-}
-
-function getNonce() {
-	if (false) {}
-
-	return __webpack_require__.nc;
-}
-
-function addStyle (obj, options) {
-	var style, update, remove, result;
-
-	// If a transform function was defined, run it on the css
-	if (options.transform && obj.css) {
-	    result = typeof options.transform === 'function'
-		 ? options.transform(obj.css) 
-		 : options.transform.default(obj.css);
-
-	    if (result) {
-	    	// If transform returns a value, use that instead of the original css.
-	    	// This allows running runtime transformations on the css.
-	    	obj.css = result;
-	    } else {
-	    	// If the transform function returns a falsy value, don't add this css.
-	    	// This allows conditional loading of css
-	    	return function() {
-	    		// noop
-	    	};
-	    }
-	}
-
-	if (options.singleton) {
-		var styleIndex = singletonCounter++;
-
-		style = singleton || (singleton = createStyleElement(options));
-
-		update = applyToSingletonTag.bind(null, style, styleIndex, false);
-		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
-
-	} else if (
-		obj.sourceMap &&
-		typeof URL === "function" &&
-		typeof URL.createObjectURL === "function" &&
-		typeof URL.revokeObjectURL === "function" &&
-		typeof Blob === "function" &&
-		typeof btoa === "function"
-	) {
-		style = createLinkElement(options);
-		update = updateLink.bind(null, style, options);
-		remove = function () {
-			removeStyleElement(style);
-
-			if(style.href) URL.revokeObjectURL(style.href);
-		};
-	} else {
-		style = createStyleElement(options);
-		update = applyToTag.bind(null, style);
-		remove = function () {
-			removeStyleElement(style);
-		};
-	}
-
-	update(obj);
-
-	return function updateStyle (newObj) {
-		if (newObj) {
-			if (
-				newObj.css === obj.css &&
-				newObj.media === obj.media &&
-				newObj.sourceMap === obj.sourceMap
-			) {
-				return;
-			}
-
-			update(obj = newObj);
-		} else {
-			remove();
-		}
-	};
-}
-
-var replaceText = (function () {
-	var textStore = [];
-
-	return function (index, replacement) {
-		textStore[index] = replacement;
-
-		return textStore.filter(Boolean).join('\n');
-	};
-})();
-
-function applyToSingletonTag (style, index, remove, obj) {
-	var css = remove ? "" : obj.css;
-
-	if (style.styleSheet) {
-		style.styleSheet.cssText = replaceText(index, css);
-	} else {
-		var cssNode = document.createTextNode(css);
-		var childNodes = style.childNodes;
-
-		if (childNodes[index]) style.removeChild(childNodes[index]);
-
-		if (childNodes.length) {
-			style.insertBefore(cssNode, childNodes[index]);
-		} else {
-			style.appendChild(cssNode);
-		}
-	}
-}
-
-function applyToTag (style, obj) {
-	var css = obj.css;
-	var media = obj.media;
-
-	if(media) {
-		style.setAttribute("media", media)
-	}
-
-	if(style.styleSheet) {
-		style.styleSheet.cssText = css;
-	} else {
-		while(style.firstChild) {
-			style.removeChild(style.firstChild);
-		}
-
-		style.appendChild(document.createTextNode(css));
-	}
-}
-
-function updateLink (link, options, obj) {
-	var css = obj.css;
-	var sourceMap = obj.sourceMap;
-
-	/*
-		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
-		and there is no publicPath defined then lets turn convertToAbsoluteUrls
-		on by default.  Otherwise default to the convertToAbsoluteUrls option
-		directly
-	*/
-	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
-
-	if (options.convertToAbsoluteUrls || autoFixUrls) {
-		css = fixUrls(css);
-	}
-
-	if (sourceMap) {
-		// http://stackoverflow.com/a/26603875
-		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-	}
-
-	var blob = new Blob([css], { type: "text/css" });
-
-	var oldSrc = link.href;
-
-	link.href = URL.createObjectURL(blob);
-
-	if(oldSrc) URL.revokeObjectURL(oldSrc);
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/lib/urls.js":
-/*!***********************************************!*\
-  !*** ./node_modules/style-loader/lib/urls.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-/**
- * When source maps are enabled, `style-loader` uses a link element with a data-uri to
- * embed the css on the page. This breaks all relative urls because now they are relative to a
- * bundle instead of the current page.
- *
- * One solution is to only use full urls, but that may be impossible.
- *
- * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
- *
- * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
- *
- */
-
-module.exports = function (css) {
-  // get current location
-  var location = typeof window !== "undefined" && window.location;
-
-  if (!location) {
-    throw new Error("fixUrls requires window.location");
-  }
-
-	// blank or null?
-	if (!css || typeof css !== "string") {
-	  return css;
-  }
-
-  var baseUrl = location.protocol + "//" + location.host;
-  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
-
-	// convert each url(...)
-	/*
-	This regular expression is just a way to recursively match brackets within
-	a string.
-
-	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-	   (  = Start a capturing group
-	     (?:  = Start a non-capturing group
-	         [^)(]  = Match anything that isn't a parentheses
-	         |  = OR
-	         \(  = Match a start parentheses
-	             (?:  = Start another non-capturing groups
-	                 [^)(]+  = Match anything that isn't a parentheses
-	                 |  = OR
-	                 \(  = Match a start parentheses
-	                     [^)(]*  = Match anything that isn't a parentheses
-	                 \)  = Match a end parentheses
-	             )  = End Group
-              *\) = Match anything and then a close parens
-          )  = Close non-capturing group
-          *  = Match anything
-       )  = Close capturing group
-	 \)  = Match a close parens
-
-	 /gi  = Get all matches, not the first.  Be case insensitive.
-	 */
-	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
-		// strip quotes (if they exist)
-		var unquotedOrigUrl = origUrl
-			.trim()
-			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
-			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
-
-		// already a full url? no change
-		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
-		  return fullMatch;
-		}
-
-		// convert the url to a full url
-		var newUrl;
-
-		if (unquotedOrigUrl.indexOf("//") === 0) {
-		  	//TODO: should we add protocol?
-			newUrl = unquotedOrigUrl;
-		} else if (unquotedOrigUrl.indexOf("/") === 0) {
-			// path should be relative to the base url
-			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
-		} else {
-			// path should be relative to current directory
-			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
-		}
-
-		// send back the fixed url(...)
-		return "url(" + JSON.stringify(newUrl) + ")";
-	});
-
-	// send back the fixed css
-	return fixedCss;
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/timers-browserify/main.js":
 /*!************************************************!*\
   !*** ./node_modules/timers-browserify/main.js ***!
@@ -39489,23 +39075,61 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("div", { staticClass: "d-flex mx-md-5 px-md-4" }, [
+      _c("div", { staticClass: "col pb-3 text-right" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-sm btn-primary",
+            attrs: { type: "button" },
+            on: { click: _vm.newEntry },
+          },
+          [_vm._v("ニュース追加")]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-7 col-md-9" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.editingId,
+              expression: "editingId",
+            },
+          ],
+          attrs: { type: "hidden", placeholder: "current" },
+          domProps: { value: _vm.editingId },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.editingId = $event.target.value
+            },
+          },
+        }),
+      ]),
+    ]),
+    _vm._v(" "),
     _c("section", [
       _c(
         "div",
         {
-          staticClass: "content_m",
-          staticStyle: { "background-image": "url('./news_img/news_bg.jpg')" },
+          staticClass: "content_m pb-4",
+          staticStyle: {
+            display: "flex",
+            "flex-wrap": "wrap",
+            "justify-content": "center",
+            "background-image": "url('./news_img/news_bg.jpg')",
+          },
         },
         [
           _c(
             "div",
             {
               staticClass: "masonry",
-              staticStyle: {
-                position: "relative",
-                height: "320px",
-                width: "960px",
-              },
+              staticStyle: { position: "relative" },
               attrs: { id: "con_m" },
             },
             _vm._l(_vm.newsList, function (news, index) {
@@ -39514,10 +39138,7 @@ var render = function () {
                   "span",
                   {
                     staticClass: "lov_block",
-                    attrs: {
-                      href: "https://dietacademy.co.jp/weblog/myfavoritewords20220419/",
-                      target: "_blank",
-                    },
+                    attrs: { href: "" + news.linkUrl, target: "_blank" },
                   },
                   [
                     _c(
@@ -39525,58 +39146,76 @@ var render = function () {
                       {
                         staticClass: "m-box masonry-brick",
                         staticStyle: {
-                          margin: "3px 12px",
+                          margin: "8px 15px",
                           width: "290px",
                           height: "320px",
                           color: "rgb(0, 0, 0)",
                         },
-                        style: { "background-color": news.backGroundColor },
+                        style: { "background-color": news.backgroundColor },
                         on: {
                           click: function ($event) {
-                            return _vm.openNewsDetail("" + news.image_url)
+                            return _vm.openNewsDetail("" + news.linkUrl)
                           },
                         },
                       },
                       [
                         _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-sm btn-dark",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function ($event) {
-                                $event.stopPropagation()
-                                return _vm.editNews("" + news.seq)
-                              },
-                            },
-                          },
-                          [_vm._v("編集")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-sm btn-danger",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function ($event) {
-                                $event.stopPropagation()
-                                return _vm.deleteNews("" + news.seq)
-                              },
-                            },
-                          },
-                          [_vm._v("削除")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
+                          "div",
                           {
                             staticStyle: {
-                              color: "#FFFFFF",
-                              "background-color": "#003399",
+                              display: "flex",
+                              "justify-content": "flex-end",
                             },
                           },
-                          [_vm._v(_vm._s(news.title))]
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-sm btn-primary",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function ($event) {
+                                    $event.stopPropagation()
+                                    return _vm.editNews("" + news.id)
+                                  },
+                                },
+                              },
+                              [_vm._v("編集")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-sm btn-danger",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function ($event) {
+                                    $event.stopPropagation()
+                                    return _vm.deleteNews("" + news.id)
+                                  },
+                                },
+                              },
+                              [_vm._v("削除")]
+                            ),
+                            _vm._v(" "),
+                            _c("span", { staticStyle: { flex: "1" } }, [
+                              _c("span", [
+                                _vm._v("表示順：" + _vm._s(news.displayOrder)),
+                              ]),
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                style: {
+                                  color: news.tagColor,
+                                  "background-color": news.tagBackgroundColor,
+                                  "font-size": "12px",
+                                },
+                              },
+                              [_vm._v(_vm._s(news.tag))]
+                            ),
+                          ]
                         ),
                         _vm._v(" "),
                         _c("p", { staticClass: "con_m3" }, [
@@ -39585,19 +39224,36 @@ var render = function () {
                           }),
                         ]),
                         _vm._v(" "),
-                        _c("p", { staticClass: "con_m1" }, [
-                          _vm._v(_vm._s(news.title)),
-                        ]),
+                        _c(
+                          "p",
+                          {
+                            staticClass: "con_m1",
+                            style: {
+                              color: news.titleColor,
+                              "font-size": "20px",
+                            },
+                          },
+                          [_vm._v(_vm._s(news.title))]
+                        ),
                         _vm._v(" "),
                         _vm._l(news.messeges, function (message) {
                           return _c(
                             "p",
-                            { key: message, staticClass: "con_m2" },
+                            {
+                              key: message,
+                              staticClass: "con_m2",
+                              style: {
+                                color: news.messageColor,
+                                "font-size": "16px",
+                                "line-height": "1.2em",
+                                margin: "0",
+                              },
+                            },
                             [
                               _vm._v(
-                                "\n                                    " +
+                                "\r\n                                    " +
                                   _vm._s(message) +
-                                  "\n                                "
+                                  "\r\n                                "
                               ),
                             ]
                           )
@@ -39613,446 +39269,783 @@ var render = function () {
           ),
           _vm._v(" "),
           _c("br", { attrs: { clear: "all" } }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.editingSeq,
-                expression: "editingSeq",
-              },
-            ],
-            attrs: { placeholder: "current" },
-            domProps: { value: _vm.editingSeq },
-            on: {
-              input: function ($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.editingSeq = $event.target.value
-              },
-            },
-          }),
         ]
       ),
-      _vm._v(" "),
-      _vm._m(0),
     ]),
     _vm._v(" "),
-    _c(
-      "form",
-      {
-        on: {
-          submit: function ($event) {
-            $event.preventDefault()
-            return _vm.submitForm.apply(null, arguments)
-          },
-        },
-      },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row justify-content-center my-1" }, [
-            _c("div", { staticClass: "col text-right" }, [
-              _vm._v("\n                お知らせタイトル\n            "),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.title,
-                      expression: "title",
-                    },
-                  ],
-                  attrs: { placeholder: "add multiple lines" },
-                  domProps: { value: _vm.title },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.title = $event.target.value
-                    },
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.titleColor,
-                      expression: "titleColor",
-                    },
-                  ],
-                  attrs: { placeholder: "edit me" },
-                  domProps: { value: _vm.titleColor },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.titleColor = $event.target.value
-                    },
-                  },
-                }),
-              ]),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row justify-content-center my-1" }, [
-            _c("div", { staticClass: "col text-right" }, [
-              _vm._v("\n                お知らせ本文\n            "),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.message,
-                      expression: "message",
-                    },
-                  ],
-                  attrs: { placeholder: "add multiple lines" },
-                  domProps: { value: _vm.message },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.message = $event.target.value
-                    },
-                  },
-                }),
-              ]),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row justify-content-center my-1" }, [
-            _c("div", { staticClass: "col text-right" }, [
-              _vm._v("\n                背景色\n            "),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.backGroundColor,
-                      expression: "backGroundColor",
-                    },
-                  ],
-                  attrs: { placeholder: "背景色を選択してください" },
-                  domProps: { value: _vm.backGroundColor },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.backGroundColor = $event.target.value
-                    },
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "row" },
-                _vm._l(_vm.colorPattern, function (pattern, index) {
-                  return _c(
-                    "span",
-                    {
-                      key: index,
-                      staticClass: "m-1",
-                      staticStyle: {
-                        width: "80px",
-                        hight: "50px",
-                        "background-color": "#11ffee",
-                      },
-                      style: { "background-color": pattern },
-                      on: {
-                        click: function ($event) {
-                          return _vm.selectBackGroundColor(pattern)
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row justify-content-center py-3" }, [
+        _vm.editingId != ""
+          ? _c(
+              "div",
+              { staticClass: "col mx-4 px-2 alert", attrs: { role: "alert" } },
+              [
+                _vm.editingId == "0"
+                  ? _c("span", [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "badge rounded-pill bg-warning text-dark",
                         },
-                      },
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(pattern) +
-                          "\n                    "
+                        [_vm._v("ニュース追加")]
                       ),
-                    ]
-                  )
-                }),
-                0
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row justify-content-center my-1" }, [
-            _c("div", { staticClass: "col text-right" }, [
-              _vm._v("\n                リンク\n            "),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.linkCheck,
-                      expression: "linkCheck",
-                    },
-                  ],
-                  attrs: { type: "checkbox", id: "checkbox" },
-                  domProps: {
-                    checked: Array.isArray(_vm.linkCheck)
-                      ? _vm._i(_vm.linkCheck, null) > -1
-                      : _vm.linkCheck,
-                  },
-                  on: {
-                    change: function ($event) {
-                      var $$a = _vm.linkCheck,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.linkCheck = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.linkCheck = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
-                        }
-                      } else {
-                        _vm.linkCheck = $$c
-                      }
-                    },
-                  },
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "checkbox" } }, [
-                  _vm._v(_vm._s(_vm.linkCheck)),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.linkUrl,
-                      expression: "linkUrl",
-                    },
-                  ],
-                  attrs: {
-                    placeholder: "リンクURL [例] https://www.google.co.jp",
-                  },
-                  domProps: { value: _vm.linkUrl },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.linkUrl = $event.target.value
-                    },
-                  },
-                }),
-                _vm._v(" "),
-                _c("p", [_vm._v("Message is: " + _vm._s(_vm.linkUrl))]),
-              ]),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row justify-content-center my-1" }, [
-            _c("div", { staticClass: "col text-right" }, [
-              _vm._v("\n                画像指定\n            "),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c("p", [
-                    _c("input", {
-                      ref: "preview",
-                      attrs: { type: "file" },
-                      on: { change: _vm.fileSelected },
-                    }),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _vm.previewImage
-                  ? _c("div", { staticClass: "col" }, [
-                      _c("img", {
-                        staticStyle: { width: "100px", hight: "100px" },
-                        attrs: { src: _vm.previewImage },
-                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "mx-3" }, [
+                        _vm._v("新しいニュースを入力してください"),
+                      ]),
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c("button", { on: { click: _vm.uploadImage } }, [
-                  _vm._v("アップロード"),
+                _vm.editingId !== "0"
+                  ? _c("span", [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "badge rounded-pill bg-warning text-dark",
+                        },
+                        [_vm._v("ニュース編集")]
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "mx-3" }, [
+                        _vm._v(
+                          _vm._s(this.title) + " の編集内容を入力してください"
+                        ),
+                      ]),
+                    ])
+                  : _vm._e(),
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.notification != ""
+          ? _c(
+              "div",
+              {
+                staticClass: "col mx-4 px-2 alert alert-success",
+                attrs: { role: "alert" },
+              },
+              [
+                _c("span", [
+                  _c("span", { staticClass: "mx-3" }, [
+                    _vm._v(_vm._s(this.notification)),
+                  ]),
+                ]),
+              ]
+            )
+          : _vm._e(),
+      ]),
+    ]),
+    _vm._v(" "),
+    _vm.editingId != ""
+      ? _c(
+          "form",
+          {
+            on: {
+              submit: function ($event) {
+                $event.preventDefault()
+                return _vm.submitForm.apply(null, arguments)
+              },
+            },
+          },
+          [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                お知らせ表示順\r\n            "),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col" }, [
-                  _c(
-                    "select",
-                    {
+                  _c("div", { staticClass: "row" }, [
+                    _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.imageSize,
-                          expression: "imageSize",
+                          value: _vm.displayOrder,
+                          expression: "displayOrder",
                         },
                       ],
+                      staticStyle: { width: "42px" },
+                      attrs: { type: "number", placeholder: "" },
+                      domProps: { value: _vm.displayOrder },
                       on: {
-                        change: function ($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function (o) {
-                              return o.selected
-                            })
-                            .map(function (o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.imageSize = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.displayOrder = $event.target.value
                         },
                       },
-                    },
-                    [
-                      _c("option", { attrs: { disabled: "", value: "" } }, [
-                        _vm._v("画像サイズ"),
-                      ]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("A")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("B")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("C")]),
-                    ]
+                    }),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v(
+                    "\r\n                お知らせタイトル\r\n            "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.title,
+                          expression: "title",
+                        },
+                      ],
+                      staticStyle: { width: "326px" },
+                      attrs: { placeholder: "タイトルを入力してください" },
+                      domProps: { value: _vm.title },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.title = $event.target.value
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "rounded ps-2",
+                        style: {
+                          width: "200px",
+                          margin: "0px 12px ",
+                          color: this.titleColor,
+                          "background-color": this.backgroundColor,
+                        },
+                      },
+                      [
+                        _vm._v(
+                          "\r\n                        " +
+                            _vm._s(this.title) +
+                            "\r\n                    "
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                タイトル文字色\r\n            "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.titleColor,
+                          expression: "titleColor",
+                        },
+                      ],
+                      attrs: { type: "hidden" },
+                      domProps: { value: _vm.titleColor },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.titleColor = $event.target.value
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    _vm._l(_vm.titleColorPattern, function (pattern, index) {
+                      return _c(
+                        "span",
+                        {
+                          key: index,
+                          staticClass: "m-1 badge",
+                          staticStyle: {
+                            width: "80px",
+                            hight: "50px",
+                            "background-color": "#11ffee",
+                          },
+                          style: { "background-color": pattern },
+                          on: {
+                            click: function ($event) {
+                              return _vm.selectTitleColor(pattern)
+                            },
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\r\n                        " +
+                              _vm._s(pattern) +
+                              "\r\n                    "
+                          ),
+                        ]
+                      )
+                    }),
+                    0
                   ),
                 ]),
               ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                お知らせ本文\r\n            "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.message,
+                          expression: "message",
+                        },
+                      ],
+                      attrs: {
+                        cols: "38",
+                        placeholder: "お知らせ本文を入力してください",
+                      },
+                      domProps: { value: _vm.message },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.message = $event.target.value
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "rounded ps-2",
+                        style: {
+                          width: "200px",
+                          margin: "0px 12px ",
+                          color: this.messageColor,
+                          "background-color": this.backgroundColor,
+                        },
+                      },
+                      [
+                        _vm._v(
+                          "\r\n                        " +
+                            _vm._s(this.message) +
+                            "\r\n                    "
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                本文文字色\r\n            "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.messageColor,
+                          expression: "messageColor",
+                        },
+                      ],
+                      attrs: { type: "hidden" },
+                      domProps: { value: _vm.messageColor },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.messageColor = $event.target.value
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    _vm._l(_vm.messageColorPattern, function (pattern, index) {
+                      return _c(
+                        "span",
+                        {
+                          key: index,
+                          staticClass: "m-1 badge",
+                          staticStyle: {
+                            width: "80px",
+                            hight: "50px",
+                            "background-color": "#11ffee",
+                          },
+                          style: { "background-color": pattern },
+                          on: {
+                            click: function ($event) {
+                              return _vm.selectMessageColor(pattern)
+                            },
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\r\n                        " +
+                              _vm._s(pattern) +
+                              "\r\n                    "
+                          ),
+                        ]
+                      )
+                    }),
+                    0
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                本文背景色\r\n            "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.backgroundColor,
+                          expression: "backgroundColor",
+                        },
+                      ],
+                      attrs: { type: "hidden" },
+                      domProps: { value: _vm.backgroundColor },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.backgroundColor = $event.target.value
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    _vm._l(_vm.colorPattern, function (pattern, index) {
+                      return _c(
+                        "span",
+                        {
+                          key: index,
+                          staticClass: "m-1 badge",
+                          staticStyle: {
+                            width: "80px",
+                            hight: "50px",
+                            "background-color": "#11ffee",
+                          },
+                          style: { "background-color": pattern },
+                          on: {
+                            click: function ($event) {
+                              return _vm.selectBackgroundColor(pattern)
+                            },
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\r\n                        " +
+                              _vm._s(pattern) +
+                              "\r\n                    "
+                          ),
+                        ]
+                      )
+                    }),
+                    0
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                リンク\r\n            "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.linkUrl,
+                          expression: "linkUrl",
+                        },
+                      ],
+                      staticStyle: { width: "326px" },
+                      attrs: {
+                        placeholder: "リンクURL [例] https://www.google.co.jp",
+                      },
+                      domProps: { value: _vm.linkUrl },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.linkUrl = $event.target.value
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: "" + this.linkUrl,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        },
+                      },
+                      [
+                        _vm._v(
+                          "\r\n                        " +
+                            _vm._s(this.linkUrl) +
+                            "\r\n                    "
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                タグ\r\n            "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tag,
+                          expression: "tag",
+                        },
+                      ],
+                      staticStyle: { width: "326px" },
+                      attrs: { placeholder: "タグを入力してください" },
+                      domProps: { value: _vm.tag },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.tag = $event.target.value
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "rounded ps-2",
+                        style: {
+                          width: "200px",
+                          margin: "0px 12px ",
+                          color: this.tagColor,
+                          "background-color": this.tagBackgroundColor,
+                        },
+                      },
+                      [
+                        _vm._v(
+                          "\r\n                        " +
+                            _vm._s(this.tag) +
+                            "\r\n                    "
+                        ),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _vm._v(
+                      "\r\n                    ※「2016/08/08」「セミナー」「おしらせ」等、自由に設定。\r\n                "
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                タグ文字色\r\n            "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tagColor,
+                          expression: "tagColor",
+                        },
+                      ],
+                      attrs: { type: "hidden", placeholder: "#ffffff" },
+                      domProps: { value: _vm.tagColor },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.tagColor = $event.target.value
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    _vm._l(_vm.tagColorPattern, function (pattern, index) {
+                      return _c(
+                        "span",
+                        {
+                          key: index,
+                          staticClass: "m-1 badge",
+                          staticStyle: {
+                            width: "80px",
+                            hight: "50px",
+                            "background-color": "#11ffee",
+                          },
+                          style: { "background-color": pattern },
+                          on: {
+                            click: function ($event) {
+                              return _vm.selectTagColor(pattern)
+                            },
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\r\n                        " +
+                              _vm._s(pattern) +
+                              "\r\n                    "
+                          ),
+                        ]
+                      )
+                    }),
+                    0
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                タグ背景色\r\n            "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tagBackgroundColor,
+                          expression: "tagBackgroundColor",
+                        },
+                      ],
+                      attrs: { type: "hidden", placeholder: "#ff0000" },
+                      domProps: { value: _vm.tagBackgroundColor },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.tagBackgroundColor = $event.target.value
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    _vm._l(
+                      _vm.tagBackgroundColorPattern,
+                      function (pattern, index) {
+                        return _c(
+                          "span",
+                          {
+                            key: index,
+                            staticClass: "m-1 badge",
+                            staticStyle: { width: "80px", hight: "50px" },
+                            style: { "background-color": pattern },
+                            on: {
+                              click: function ($event) {
+                                return _vm.selectTagBackgroundColor(pattern)
+                              },
+                            },
+                          },
+                          [
+                            _vm._v(
+                              "\r\n                        " +
+                                _vm._s(pattern) +
+                                "\r\n                    "
+                            ),
+                          ]
+                        )
+                      }
+                    ),
+                    0
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                画像指定\r\n            "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c("p", [
+                        _c("input", {
+                          ref: "preview",
+                          attrs: { type: "file" },
+                          on: { change: _vm.fileSelected },
+                        }),
+                      ]),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _vm.previewImage !== ""
+                      ? _c("div", { staticClass: "col" }, [
+                          _c("img", {
+                            staticStyle: { width: "120px", hight: "120px" },
+                            attrs: { src: _vm.previewImage },
+                          }),
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.editingNewsImageExists !== false
+                      ? _c("div", { staticClass: "col" }, [
+                          _c("img", {
+                            staticStyle: { width: "120px", hight: "120px" },
+                            attrs: { src: "" + _vm.editingNewsImage },
+                          }),
+                        ])
+                      : _vm._e(),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-1" }, [
+                _c("div", { staticClass: "col text-right" }, [
+                  _vm._v("\r\n                内容確認\r\n            "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.confirmCheck,
+                          expression: "confirmCheck",
+                        },
+                      ],
+                      staticClass: "mx-2 mt-1",
+                      attrs: { type: "checkbox", id: "checkbox" },
+                      domProps: {
+                        checked: Array.isArray(_vm.confirmCheck)
+                          ? _vm._i(_vm.confirmCheck, null) > -1
+                          : _vm.confirmCheck,
+                      },
+                      on: {
+                        change: function ($event) {
+                          var $$a = _vm.confirmCheck,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 && (_vm.confirmCheck = $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                (_vm.confirmCheck = $$a
+                                  .slice(0, $$i)
+                                  .concat($$a.slice($$i + 1)))
+                            }
+                          } else {
+                            _vm.confirmCheck = $$c
+                          }
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "checkbox" } }, [
+                      _vm.confirmCheck == false
+                        ? _c("span", [_vm._v("未確認")])
+                        : _c("span", [_vm._v("確認済み")]),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-lg btn-primary mx-2",
+                        attrs: { type: "submit" },
+                      },
+                      [_vm._v("登録")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-lg btn-secondary mx-2",
+                        attrs: { type: "button" },
+                        on: { click: _vm.cancelEdit },
+                      },
+                      [_vm._v("キャンセル")]
+                    ),
+                  ]),
+                ]),
+              ]),
             ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row justify-content-center my-1" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("img", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.editingNewsImageExists,
-                    expression: "editingNewsImageExists",
-                  },
-                ],
-                attrs: { src: "" + _vm.editingNewsImage, width: "50%" },
-              }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row justify-content-center my-1" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.confirmCheck,
-                  expression: "confirmCheck",
-                },
-              ],
-              attrs: { type: "checkbox", id: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.confirmCheck)
-                  ? _vm._i(_vm.confirmCheck, null) > -1
-                  : _vm.confirmCheck,
-              },
-              on: {
-                change: function ($event) {
-                  var $$a = _vm.confirmCheck,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.confirmCheck = $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        (_vm.confirmCheck = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
-                    }
-                  } else {
-                    _vm.confirmCheck = $$c
-                  }
-                },
-              },
-            }),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "checkbox" } }, [
-              _vm._v(_vm._s(_vm.confirmCheck)),
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-lg btn-primary mx-2",
-                attrs: { type: "submit" },
-              },
-              [_vm._v("登録")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-lg btn-primary mx-2",
-                attrs: { type: "button" },
-              },
-              [_vm._v("キャンセル")]
-            ),
-          ]),
-        ]),
-      ]
-    ),
+          ]
+        )
+      : _vm._e(),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex" }, [
-      _c("div", { staticStyle: { width: "300px", padding: "0 0 10px 0" } }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-sm btn-primary", attrs: { type: "button" } },
-          [_vm._v("新規追加")]
-        ),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -52425,9 +52418,7 @@ if (token) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Editor_vue_vue_type_template_id_1dbb5118_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Editor.vue?vue&type=template&id=1dbb5118&scoped=true& */ "./resources/js/components/Editor.vue?vue&type=template&id=1dbb5118&scoped=true&");
 /* harmony import */ var _Editor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Editor.vue?vue&type=script&lang=js& */ "./resources/js/components/Editor.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Editor_vue_vue_type_style_index_0_id_1dbb5118_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css& */ "./resources/js/components/Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -52435,7 +52426,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Editor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Editor_vue_vue_type_template_id_1dbb5118_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Editor_vue_vue_type_template_id_1dbb5118_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -52464,22 +52455,6 @@ component.options.__file = "resources/js/components/Editor.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Editor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Editor.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Editor.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Editor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css&":
-/*!*****************************************************************************************************!*\
-  !*** ./resources/js/components/Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css& ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Editor_vue_vue_type_style_index_0_id_1dbb5118_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--7-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Editor.vue?vue&type=style&index=0&id=1dbb5118&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Editor_vue_vue_type_style_index_0_id_1dbb5118_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Editor_vue_vue_type_style_index_0_id_1dbb5118_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Editor_vue_vue_type_style_index_0_id_1dbb5118_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Editor_vue_vue_type_style_index_0_id_1dbb5118_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-
 
 /***/ }),
 
@@ -52599,9 +52574,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\kg\00_cw\cw021\admin\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\kg\00_cw\cw021\admin\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\kg\00_cw\cw021\admin\resources\sass\editor.scss */"./resources/sass/editor.scss");
+__webpack_require__(/*! C:\Users\rehop\vscode_ws\rehop\php\cw021\admin\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\rehop\vscode_ws\rehop\php\cw021\admin\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\rehop\vscode_ws\rehop\php\cw021\admin\resources\sass\editor.scss */"./resources/sass/editor.scss");
 
 
 /***/ })
