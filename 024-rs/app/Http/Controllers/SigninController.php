@@ -25,7 +25,8 @@ class SigninController
 
         if( $user != null ){
             $request->session()->put('uid',$id);
-            return redirect('./report_weekly');
+            // return redirect('./report_weekly');
+            return redirect('./report_information');
 
         } else {
             return view('signin');

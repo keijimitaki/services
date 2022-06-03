@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SigninController;
+use App\Http\Controllers\ReportInformationController;
 use App\Http\Controllers\ReportWeeklyController;
 use App\Http\Controllers\ReportDailyController;
 
@@ -23,10 +24,14 @@ Route::get('/', function () {
 
 Route::post('/signin', [SigninController::class, 'signin']);
 
+Route::get('/report_information', [ReportInformationController::class, 'index']);
+
 Route::get('/report_weekly', [ReportWeeklyController::class, 'index']);
 Route::post('/report_weekly', [ReportWeeklyController::class, 'index']);
 
 Route::get('/report_daily', [ReportDailyController::class, 'index']);
 Route::post('/report_daily/save', [ReportDailyController::class, 'saveReports']);
 Route::get('/report_daily/signout', [ReportDailyController::class, 'signOut']);
+Route::post('/report_daily/csvimport', [ReportDailyController::class, 'csvImport']);
+Route::post('/report_daily/pdfexport', [ReportDailyController::class, 'pdfExport']);
 

@@ -15,26 +15,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset('/assets/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/reportlist.css') }}">
-
-    <!-- <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style> -->
-
     
-    <!-- Custom styles for this template -->
-    <link href="reportlist.css" rel="stylesheet">
   </head>
   <body class="bg-light">
     
@@ -69,19 +50,16 @@
                 新規作成
               </a>
             </li>
-            <li>
-              <a href="#" class="nav-link link-dark disabled">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                下書き
-              </a>
-            </li>
           </ul>
 
         </div>
 
       </div>
+
       <div class="col ">
-        週報一覧
+        <div class="row">
+            週報一覧
+        </div>
         <table class="table">
           <thead>
             <tr>
@@ -98,14 +76,19 @@
               <th scope="row">{{ ($loop->index) + 1}}</th>
               <td>{{$report->day}}</td>
               <td>{{$report->name}}</td>
-              <td>{{$report->status}}</td>
-              <td>確認</td>
+              <td></td>
+              <td></td>
             </tr>
           @endforeach
           </tbody>
         </table>        
       </div>
-      <div class="col-3 pt-4 px-5 ">
+      <div class="col-3 px-5 ">
+        
+        <div class="row ms-0">
+          {{ $user_name }}
+        </div>
+
         <div class="row py-2">
           <label for="start">提出日（From）</label>
           <input type="date" class="col-6" id="start" name="report-from"
@@ -156,8 +139,7 @@
 </div>
 
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
       <!-- <script src="form-validation.js"></script> -->
   
     </body>

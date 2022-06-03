@@ -17,14 +17,10 @@
     <link rel="stylesheet" href="{{ asset('/css/reportlist.css') }}">
     
 
-
-    
-    <!-- Custom styles for this template -->
-    <link href="reportlist.css" rel="stylesheet">
-  </head>
+    </head>
   <body class="bg-light">
 
-  <form action="{{ url('/report_daily/save')}}" method="POST">
+  <form action="{{ url('/report_daily/save')}}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}  
     
 <div class="container-fluid px-5">
@@ -56,12 +52,6 @@
               <a href="#" class="nav-link active ">
                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
                 新規作成
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link link-dark disabled">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                下書き
               </a>
             </li>
           </ul>
@@ -146,8 +136,15 @@
           @include('report_daily_this_week')
         </div>
 
+        <div id="report_summary" style="display:none;">
+          @include('report_daily_summary')
+        </div>
+
+
       </div>
 
+
+      
 
     </div>
 
@@ -158,14 +155,26 @@
 
 </form>
 
-      <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
       <!-- <script src="form-validation.js"></script> -->
+      <script src="{{ asset('/assets/dist/js/bootstrap.bundle.min.js') }}"></script>
+
       <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
       <script type="text/javascript">
         $(function(){
+
+          //Mの計算
+          //実績のM
+          $('input[name="last_week_m\\[\\]"]').each(function(index,element){
+            console.log(index + ':' + $(element).val());
+          });
+
+          $('input[name="this_week_m\\[\\]"]').each(function(index,element){
+            console.log(index + ':' + $(element).val());
+          });
+
           $('.nav-item .nav-link').click(function () {
-            //window.alert(this);
 
             $('.nav-item .nav-link').each(function(index, element){
               $(element).removeClass();
@@ -178,6 +187,38 @@
             $(this).addClass('nav-link active');
             const target_show_area = $(this).data('target');
             $('#report_' + target_show_area).show();
+
+          });
+
+
+          $('input[name="file_last_week_csv"]').change(function () {
+
+            $('button[name="btn_import_last_week_csvfile"]').removeClass();
+            let btn_state = 'disabled';
+            if($(this).val()) {
+              btn_state = 'active';
+            }
+            $('button[name="btn_import_last_week_csvfile"]').addClass('btn btn-outline-secondary ' + btn_state);
+
+            $('button[name="btn_import_this_week_csvfile"]').removeClass();
+            $('button[name="btn_import_this_week_csvfile"]').addClass('btn btn-outline-secondary disabled');
+            $('input[name="file_this_week_csv"]').val('');
+
+          });
+
+          $('input[name="file_this_week_csv"]').change(function () {
+
+            $('button[name="btn_import_this_week_csvfile"]').removeClass();
+            let btn_state = 'disabled';
+            if($(this).val()) {
+              btn_state = 'active';
+            }
+            $('button[name="btn_import_this_week_csvfile"]').addClass('btn btn-outline-secondary ' + btn_state);
+
+
+            $('button[name="btn_import_last_week_csvfile"]').removeClass();
+            $('button[name="btn_import_last_week_csvfile"]').addClass('btn btn-outline-secondary disabled');
+            $('input[name="file_last_week_csv"]').val('');
 
           });
 

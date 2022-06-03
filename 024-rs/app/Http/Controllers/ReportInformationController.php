@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class ReportWeeklyController
+class ReportInformationController
 {
    
     public function index(Request $request){
@@ -33,7 +33,7 @@ class ReportWeeklyController
         $view_data['user_name'] = $user_name;
         $view_data['reportlist'] = $reports;
 
-        return view('./report_weekly', $view_data);
+        return view('./report_information', $view_data);
 
     }
 
