@@ -1,0 +1,193 @@
+@charset "utf-8";
+/* レイアウトのためのCSS */
+
+body{
+    background:#f0f0f0;
+    font-family: 'Noto Sans JP', sans-serif;
+	color: aliceblue;
+	/*color: #FFF0F5; */ 
+	/*color: #333;*/
+	font-size:1rem;
+	line-height:1.85;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%; 
+	word-wrap: break-word;
+}
+
+
+ul{
+	margin:0;
+	padding: 0;
+	list-style: none;
+}
+
+a{
+	color: #333;
+	text-decoration: none;
+    outline: none;
+}
+
+img{
+    width:100%;
+    height: auto;
+}
+
+*{
+    box-sizing: border-box
+}
+
+/* font-family */
+
+#header,h1,h2,.heading01,.count-size{
+    font-family: 'Roboto', sans-serif;
+}
+
+/* header */
+
+#header{
+    padding: 35px 70px 0px 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width:960px) {
+#header {
+    padding: 25px 30px 0 90px;
+    }
+}
+
+@media screen and (max-width:870px) {
+#header {
+    padding: 15px 30px;
+    justify-content: center;
+    }    
+}
+
+
+@media screen and (max-width:768px) {
+#header h1 a{
+    font-size: 1.4rem;
+    }
+}
+
+#header .header-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header ul{
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    margin: 0 20px 0 0;
+}
+
+@media screen and (max-width:870px) {
+#header ul{
+    display: none;
+    }
+}
+
+#header li,
+#header dl,
+#header dt,
+#header dd{
+    display: inline-block;
+}
+
+
+#header .float3{
+    border-radius: 30px;
+}
+
+@media screen and (max-width:870px) {
+#header .float3{
+    display: none;
+}
+    
+}
+
+
+/* container */
+#container{
+    padding:0 70px 0 130px;
+}
+
+@media screen and (max-width:960px) {
+#container{
+    padding:0 30px;
+    }
+    
+}
+
+/* article */
+
+.article_main {
+    padding: 20px 60px;
+}
+.article_main p{
+    margin: 16px;
+}
+.article_main li{
+    list-style-type: disc;
+}
+.article_main ul{
+    margin-left:32px;
+}
+.article_main .story li{
+    list-style-type: decimal;
+}
+
+.sns_links {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    text-align: right;
+}
+
+.sns_links nav li {
+    display: inline;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.sns_links nav li ion-icon{
+    font-size: 24px;
+    color:white;
+}
+
+@media screen and (max-width:960px) {
+    .article_main {
+        padding: 20px 0px;
+    }
+}
+
+
+/* footer */
+
+#page-top{
+    margin: 0 auto 0px auto;
+    display: block;
+  width: 30px;
+  height: 30px;
+  border: 4px solid;
+    border-radius: 2px;
+  border-color: white white transparent transparent;
+  transform: rotate(-45deg);
+    cursor: pointer;
+}
+
+
+
+
+.footer_info {
+    padding: 20px;
+    
+}
+
+.footer_info .name_plate {
+    text-align: center;
+    display: block;
+}
